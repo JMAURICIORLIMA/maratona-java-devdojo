@@ -135,3 +135,50 @@ referência, você pode inicializá-las com `null` ou com uma instância de obje
 
 > [Maratona Java 40 - Orientação Objetos - Introdução classes pt 02](https://www.youtube.com/watch?v=uB7KvSz6WiA&list=PL62G310vn6nFIsOCC0H-C2infYgwm8SWW&index=41)
 
+# Maratona Java 41 - Orientação Objetos - Introdução classes pt 03 - Coesão
+
+Coesão é um princípio de design de software que se refere à medida em que as funcionalidades de um módulo, classe ou
+componente estão relacionadas e agrupadas de forma lógica. Quanto mais coeso for um componente, mais relacionadas são
+suas responsabilidades internas e menos dependências ele tem de outros componentes. A coesão é um indicador de quão bem
+uma classe ou módulo mantém um foco singular e claro em sua funcionalidade.
+
+A coesão é importante no desenvolvimento de software por várias razões:
+
+1. **Facilita a Manutenção**: Componentes coesos são mais fáceis de entender, modificar e manter, porque suas
+responsabilidades estão claramente definidas. Isso facilita a detecção e correção de erros, bem como a adição de novos
+recursos.
+
+2. **Reutilização de Código**: Componentes coesos são mais propensos a serem reutilizados em diferentes partes do
+sistema, porque são independentes e focados em uma funcionalidade específica.
+
+3. **Testabilidade**: Componentes coesos são mais fáceis de testar, porque suas funcionalidades estão claramente
+definidas e isoladas umas das outras.
+
+Existem vários tipos de coesão que descrevem diferentes níveis de relacionamento interno dentro de um componente:
+
+1. **Coesão Funcional**: Neste nível mais alto de coesão, todas as responsabilidades internas de um componente estão
+diretamente relacionadas à realização de uma única tarefa ou funcionalidade específica.
+
+2. **Coesão Sequencial**: As responsabilidades internas do componente estão relacionadas em uma sequência lógica, onde
+a saída de uma função se torna a entrada da próxima.
+
+3. **Coesão Comunicacional**: Os componentes são agrupados com base em quais dados eles compartilham ou com quais
+outros componentes eles precisam se comunicar.
+
+4. **Coesão Temporal**: As responsabilidades internas do componente estão relacionadas ao mesmo período de tempo ou
+atividade.
+
+5. **Coesão Procedural**: As responsabilidades internas do componente estão relacionadas a uma série de etapas ou
+procedimentos.
+
+6. **Coesão Lógica**: As responsabilidades internas do componente estão relacionadas logicamente, mas não
+necessariamente em uma sequência específica.
+
+7. **Coesão de Coincidência**: Os componentes não têm uma relação lógica entre si; eles foram agrupados por acaso.
+
+Em geral, o objetivo é alcançar coesão funcional, onde cada componente tem uma única responsabilidade bem definida e
+independente. Isso resulta em um código mais organizado, modular e fácil de manter. Um dos princípios relacionados é o
+princípio da responsabilidade única (SRP), que afirma que uma classe deve ter apenas um motivo para mudar, promovendo
+alta coesão.
+
+> [Maratona Java 41 - Orientação Objetos - Introdução classes pt 03 - Coesão](https://www.youtube.com/watch?v=dJLYPP1ExYY&list=PL62G310vn6nFIsOCC0H-C2infYgwm8SWW&index=42)
