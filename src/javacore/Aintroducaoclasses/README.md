@@ -182,3 +182,63 @@ princípio da responsabilidade única (SRP), que afirma que uma classe deve ter 
 alta coesão.
 
 > [Maratona Java 41 - Orientação Objetos - Introdução classes pt 03 - Coesão](https://www.youtube.com/watch?v=dJLYPP1ExYY&list=PL62G310vn6nFIsOCC0H-C2infYgwm8SWW&index=42)
+
+# Maratona Java 43 - Orientação Objetos - Referência de objetos
+
+Vou criar um exemplo com dois objetos de carros, `carro1` e `carro2`, com os atributos `nome`, `modelo` e `ano`
+definidos como `public String`, `public String` e `public int`, respectivamente. Em seguida, vou imprimir as
+informações desses atributos e demonstrar o que acontece quando uma variável de instância referencia a outra.
+
+```java
+public class Carro {
+    public String nome;
+    public String modelo;
+    public int ano;
+
+    // Construtor para inicializar os atributos
+    public Carro(String nome, String modelo, int ano) {
+        this.nome = nome;
+        this.modelo = modelo;
+        this.ano = ano;
+    }
+
+    public void imprimirInformacoes() {
+        System.out.println("Nome: " + nome);
+        System.out.println("Modelo: " + modelo);
+        System.out.println("Ano: " + ano);
+    }
+}
+```
+```java
+public class ExemploReferenciasCarro {
+    public static void main(String[] args) {
+        // Criação de referências de objetos para carros com atributos diferentes
+        Carro carro1 = new Carro("Carro1", "Sedan", 2022);
+        Carro carro2 = new Carro("Carro2", "SUV", 2023);
+
+        // Impressão das informações dos carros
+        System.out.println("Informações do Carro 1:");
+        carro1.imprimirInformacoes();
+
+        System.out.println("\nInformações do Carro 2:");
+        carro2.imprimirInformacoes();
+
+        // Referenciando um objeto pelo outro
+        carro1 = carro2;
+
+        System.out.println("\nDepois de referenciar carro1 a carro2:");
+
+        // Imprime as informações do carro1 (que agora aponta para o mesmo objeto que carro2)
+        System.out.println("Informações do Carro 1 (após referenciar):");
+        carro1.imprimirInformacoes();
+    }
+}
+```
+
+Neste exemplo, criamos dois objetos de carros, `carro1` e `carro2`, com atributos públicos `nome`, `modelo` e `ano`. Em
+seguida, imprimimos as informações desses atributos para ambos os carros. Depois, fazemos com que `carro1` referencie o
+mesmo objeto que `carro2`. Isso significa que `carro1` e `carro2` agora apontam para o mesmo objeto na memória. Quando
+imprimimos as informações de `carro1` após essa operação, veremos que ele possui os mesmos valores de atributo que
+`carro2`, porque ambos estão se referindo ao mesmo objeto.
+
+> [Maratona Java 43 - Orientação Objetos - Referência de objetos](https://www.youtube.com/watch?v=g_SGuMYHgI0&list=PL62G310vn6nFIsOCC0H-C2infYgwm8SWW&index=44)

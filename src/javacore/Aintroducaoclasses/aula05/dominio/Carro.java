@@ -1,4 +1,4 @@
-package javacore.Aintroducaoclasses.exercicio.dominio;
+package javacore.Aintroducaoclasses.aula05.dominio;
 
 public class Carro {
 

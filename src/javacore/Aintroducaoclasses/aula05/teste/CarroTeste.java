@@ -17,15 +17,26 @@ public class CarroTeste {
         carro2.modelo = "SRT";
         carro2.ano = 2015;
 
+        System.out.println("Carro1");
         System.out.println("Marca: " + carro1.nome);
         System.out.println("Modelo: " + carro1.modelo);
         System.out.println("Ano: " + carro1.ano);
 
         System.out.println("----------------------------");
 
+        System.out.println("Carro2");
         System.out.println("Marca: " + carro2.nome);
         System.out.println("Modelo: " + carro2.modelo);
         System.out.println("Ano: " + carro2.ano);
+
+        carro1 = carro2;
+
+        System.out.println("----------------------------");
+
+        System.out.println("Carro1");
+        System.out.println("Marca: " + carro1.nome);
+        System.out.println("Modelo: " + carro1.modelo);
+        System.out.println("Ano: " + carro1.ano);
 
 
     }
