@@ -132,3 +132,6 @@ objeto criado.
 
 Lembre-se de que é importante sempre inicializar variáveis antes de usá-las para evitar erros. No caso de variáveis de
 referência, você pode inicializá-las com `null` ou com uma instância de objeto, dependendo de sua lógica de programa.
+
+> [Maratona Java 40 - Orientação Objetos - Introdução classes pt 02](https://www.youtube.com/watch?v=uB7KvSz6WiA&list=PL62G310vn6nFIsOCC0H-C2infYgwm8SWW&index=41)
+
