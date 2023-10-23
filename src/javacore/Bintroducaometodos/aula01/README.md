@@ -21,7 +21,10 @@ Primeiro, um método consiste em seis partes:
 
 Vejamos um exemplo:
 
+<<<<<<< HEAD
 ![Method](https://abre.ai/g4S5)
+=======
+>>>>>>> origin/detached
 
 2.1. **Modificador de acesso**
 
