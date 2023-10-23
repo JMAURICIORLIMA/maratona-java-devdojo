@@ -21,7 +21,7 @@ Primeiro, um método consiste em seis partes:
 
 Vejamos um exemplo:
 
-![Method](img/method-structure-3-1024x131.png)
+![Method](https://abre.ai/g4SL)
 
 2.1. **Modificador de acesso**
 
