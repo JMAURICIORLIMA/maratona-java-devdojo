@@ -21,7 +21,7 @@ Primeiro, um método consiste em seis partes:
 
 Vejamos um exemplo:
 
-![Method](/maratona-java-devdojo/img/method-structure-3-1024x131.png)
+![Method](https://github.com/JMAURICIORLIMA/maratona-java-devdojo/blob/91dfc7c64e2fcfb24ce191dc41e21c1846436118/img/method-structure-3-1024x131.png)
 
 2.1. **Modificador de acesso**
 
