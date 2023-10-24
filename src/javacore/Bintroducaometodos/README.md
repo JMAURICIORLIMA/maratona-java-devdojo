@@ -191,4 +191,69 @@ Methods in Java [^1].
 
 Orientação Objetos - Métodos pt-01 [^2].
 
-[^2] [Maratona Java 44 - Orientação Objetos - Métodos pt 01](https://abre.ai/g4Q5)
+[^2]: Acesso o vídeo YouTube -> [Maratona Java 44 - Orientação Objetos - Métodos pt 01](https://abre.ai/g4Q5).
+
+#
+
+**Parâmetros em Java: Resumo**
+
+Em Java, parâmetros são informações que você passa para um método ou construtor quando o chama. Eles são usados para
+transmitir dados ou argumentos necessários para a execução do método. Aqui estão os pontos-chave sobre parâmetros em
+Java:
+
+### 1. **Definição de Parâmetros:**
+- **Métodos:** São funções definidas em uma classe.
+- **Construtores:** São métodos especiais usados para inicializar objetos.
+
+### 2. **Sintaxe:**
+- **Método sem Parâmetros:**
+  ```java
+  void meuMetodo() {
+      // Código aqui
+  }
+  ```
+- **Método com Parâmetros:**
+  ```java
+  void meuMetodo(int parametro1, String parametro2) {
+      // Código aqui
+  }
+  ```
+
+### 3. **Tipos de Parâmetros:**
+- **Parâmetros Primitivos:** Tipos de dados básicos como `int`, `double`, `char`, etc.
+- **Objetos como Parâmetros:** Você pode passar instâncias de classes como parâmetros.
+- **Arrays como Parâmetros:** Arrays podem ser usados como parâmetros.
+
+### 4. **Passagem por Valor:**
+- Em Java, os parâmetros são passados por valor.
+- Para tipos primitivos, o valor real é passado.
+- Para objetos, a referência para o objeto é passada por valor.
+
+### 5. **Número e Ordem dos Parâmetros:**
+- O número e a ordem dos parâmetros em uma chamada de método devem corresponder à definição do método.
+- É possível ter métodos com o mesmo nome, desde que a assinatura (tipo e ordem dos parâmetros) seja diferente.
+
+### 6. **Parâmetros Opcionais (Java 8+):**
+- Em Java 8 e posteriores, você pode usar a API de Streams para trabalhar com parâmetros opcionais.
+- Isso é útil para lidar com valores que podem ser nulos.
+
+### 7. **Palavra-chave `this`:**
+- A palavra-chave `this` pode ser usada dentro de métodos para se referir aos campos da classe quando há ambiguidade
+com parâmetros.
+
+### 8. **Métodos Variáveis (Java 5+):**
+- Métodos que aceitam um número variável de parâmetros são suportados no Java usando `varargs`.
+- Exemplo:
+  ```java
+  void meuMetodo(String... palavras) {
+      // Código aqui
+  }
+  ```
+
+Entender como trabalhar com parâmetros é fundamental para a programação em Java, pois você frequentemente precisará
+passar dados para métodos a fim de que eles realizem tarefas específicas.
+
+Orientação Objetos - Métodos pt-02 - Parâmetros [^1].
+
+[^1]: Acesso o vídeo YouTube -> [Maratona Java 45 - Orientação Objetos - Métodos pt 02 - Parâmetros](https://abre.ai/g4VK).
+
