@@ -439,7 +439,7 @@ memória da pilha.
 diferente na memória da pilha.
 3. Qualquer modificação nessas cópias afeta apenas elas e deixa as variáveis originais inalteradas.
 
-![]()
+![img01](https://github.com/JMAURICIORLIMA/maratona-java-devdojo/blob/9cd23e596a87c27d55ee0b33578b73fd36f4abd8/img/baeldung_-_pass_by_value_-_passing_primitives.jpg)
 
 #### 3.2. Passando Referências de Objetos
 
@@ -497,19 +497,19 @@ class Foo {
 Vamos analisar as afirmações do programa acima. Passamos os objetos no "a" e "b" valor método modificar() que possui o
 mesmo 1. Inicialmente, essas referências de objeto apontam para dois locais distintos de objeto em um espaço de heap:
 
-![]()
+![img02](https://github.com/JMAURICIORLIMA/maratona-java-devdojo/blob/9cd23e596a87c27d55ee0b33578b73fd36f4abd8/img/baeldung_-_pass_by_value_-_passing_primitives_-_initial.jpg)
 
 Quando essas referências a e b são passadas no método modificar(), ele cria cópias espelhadas das referências a1 e b1
 que apontam para os mesmos objetos antigos:
 
-![]()
+![img03](https://github.com/JMAURICIORLIMA/maratona-java-devdojo/blob/9cd23e596a87c27d55ee0b33578b73fd36f4abd8/img/baeldung_-_pass_by_value_-_passing_primitives_-_before_method_ca.jpg)
 
 No método modificar(), quando modificamos a referência a1 , ela altera o objeto original. Porém, para uma referência b1,
 atribuímos um novo objeto. Então agora está apontando para um novo objeto na memória heap.
 
 Qualquer alteração feita em b1 não refletirá nada no objeto original:
 
-![]()
+![img04](https://github.com/JMAURICIORLIMA/maratona-java-devdojo/blob/9cd23e596a87c27d55ee0b33578b73fd36f4abd8/img/baeldung_-_pass_by_value_-_passing_primitives_-_after_method_cal.jpg)
 
 ### 4. Conclusão
 
