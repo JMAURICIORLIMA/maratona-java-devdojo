@@ -253,11 +253,11 @@ com parâmetros.
 Entender como trabalhar com parâmetros é fundamental para a programação em Java, pois você frequentemente precisará
 passar dados para métodos a fim de que eles realizem tarefas específicas.
 
-Orientação Objetos - Métodos pt-02 - Parâmetros [^1].
+Orientação Objetos - Métodos pt-02 - Parâmetros [^3].
 
-[^1]: Acesso o vídeo YouTube -> [Maratona Java 45 - Orientação Objetos - Métodos pt 02 - Parâmetros](https://abre.ai/g4VK).
+[^3]: Acesso o vídeo YouTube -> [Maratona Java 45 - Orientação Objetos - Métodos pt 02 - Parâmetros](https://abre.ai/g4VK).
 
-# Maratona Java 46 - Orientação Objetos - Métodos - Retorno
+# Maratona Java 46 e 47 - Orientação Objetos - Métodos - Retorno
 
 **Retorno em Métodos em Java: Resumo**
 
@@ -329,10 +329,210 @@ problemas que podem ser quebrados em subproblemas semelhantes.
 Entender como funciona o retorno em métodos é crucial, pois isso permite que você crie funções reutilizáveis que podem
 ser integradas eficientemente em diferentes partes de seu código.
 
-Orientação Objetos - Métodos pt-03 - Retorno pt-01 [^1].
+Orientação Objetos - Métodos pt-03 - Retorno pt-01 [^4].
 
-[^1]: Acesso o vídeo YouTube -> [Maratona Java 46 - Orientação Objetos - Métodos pt 03 - Retorno pt-01](https://abre.ai/g4Zi).
+[^4]: Acesso o vídeo YouTube -> [Maratona Java 46 - Orientação Objetos - Métodos pt 03 - Retorno pt-01](https://abre.ai/g4Zi).
 
-Orientação Objetos - Métodos pt-03 - Retorno pt-02 [^2].
+Orientação Objetos - Métodos pt-03 - Retorno pt-02 [^5].
 
-[^2]: Acesso o vídeo YouTube -> [Maratona Java 47 - Orientação Objetos - Métodos pt 04 - Retorno pt-02](https://abre.ai/g4ZY).
+[^5]: Acesso o vídeo YouTube -> [Maratona Java 47 - Orientação Objetos - Métodos pt 04 - Retorno pt-02](https://abre.ai/g4ZY).
+
+# Maratona Java 48, 49 e 50 - Orientação Objetos - Métodos - Parâmetros tipo Primitivos e tipo Referência.
+
+### 1. Introdução
+
+Os dois modos mais comuns de passar argumentos para métodos são “passagem por valor” e “passagem por referência”.
+Diferentes linguagens de programação usam esses conceitos de maneiras diferentes. No que diz respeito ao Java, tudo é
+estritamente Pass-by-Value.
+
+Neste tutorial, ilustraremos como Java passa argumentos para vários tipos.
+
+### 2. Passagem por Valor vs. Passagem por Referência
+
+Vamos começar com alguns dos diferentes mecanismos de passagem de parâmetros para funções:
+
+* valor
+* referência
+* resultado
+* valor-resultado
+* nome
+
+Os dois mecanismos mais comuns nas linguagens de programação modernas são “Passagem por Valor” e “Passagem por
+Referência”. Antes de prosseguirmos, vamos discutir isso primeiro:
+
+#### 2.1. Passagem por Valor
+
+Quando um parâmetro é passado por valor, o método chamador e o método chamado operam em duas variáveis diferentes que
+são cópias uma da outra. Quaisquer alterações em uma variável não modificam a outra.
+
+Isso significa que ao chamar um método, os parâmetros passados para o método chamado serão clones dos parâmetros
+originais. Qualquer modificação feita no método chamado não terá efeito nos parâmetros originais do método chamador.
+
+#### 2.2. Passagem por Referência
+
+Quando um parâmetro é passado por referência, o chamador e o receptor operam no mesmo objeto.
+
+Isso significa que quando uma variável é passada por referência, o identificador único do objeto é enviado ao método.
+Quaisquer alterações nos membros da instância do parâmetro resultarão na alteração do valor original.
+
+### 3. Passagem de Parâmetros em Java
+
+Os conceitos fundamentais em qualquer linguagem de programação são “valores” e “referências”. Em Java, as variáveis 
+primitivas armazenam os valores reais, enquanto as não primitivas armazenam as variáveis de referência que apontam para
+os endereços dos objetos aos quais estão se referindo. Tanto os valores quanto as referências são armazenados na
+memória da pilha.
+
+Argumentos em Java são sempre passados por valor. Durante a invocação do método, uma cópia de cada argumento, seja um
+valor ou uma referência, é criada na memória da pilha que é então passada para o método.
+
+No caso de primitivos, o valor é simplesmente copiado dentro da memória da pilha que é então passado para o método
+chamado; no caso de não primitivos, uma referência na memória da pilha aponta para os dados reais que residem no heap.
+Quando passamos um objeto, a referência na memória da pilha é copiada e a nova referência é passada para o método.
+
+Vamos agora ver isso em ação com a ajuda de alguns exemplos de código.
+
+#### 3.1. Passando Tipos Primitivos
+
+A linguagem de programação Java apresenta oito tipos de dados primitivos. Variáveis primitivas são armazenadas
+diretamente na memória da pilha. Sempre que qualquer variável de tipo de dados primitivo é passada como argumento, os
+parâmetros reais são copiados para argumentos formais e esses argumentos formais acumulam seu próprio espaço na memória
+da pilha.
+
+A vida útil desses parâmetros formais dura apenas enquanto o método estiver em execução e, ao retornar, esses argumentos
+formais são removidos da pilha e descartados.
+
+Vamos tentar entendê-lo com a ajuda de um exemplo de código:
+
+```java
+public class PrimitivesUnitTest {
+ 
+    @Test   //ao modificar primitivos, então valores originais não modificados
+    public void whenModifyingPrimitives_thenOriginalValuesNotModified() {
+        
+        int x = 1;
+        int y = 2;
+       
+        // Before Modification
+        assertEquals(x, 1);
+        assertEquals(y, 2);
+        
+        modify(x, y);
+        
+        // After Modification
+        assertEquals(x, 1);
+        assertEquals(y, 2);
+    }
+    
+    public static void modify(int x1, int y1) {
+        x1 = 5;
+        y1 = 10;
+    }
+}
+
+```
+
+Vamos tentar entender as afirmações do programa acima analisando como esses valores são armazenados na memória:
+
+1. As variáveis “x” e “y” no método principal são tipos primitivos e seus valores são armazenados diretamente na
+memória da pilha.
+2. Quando chamamos o método modificar(), uma cópia exata de cada uma dessas variáveis é criada e armazenada em um local
+diferente na memória da pilha.
+3. Qualquer modificação nessas cópias afeta apenas elas e deixa as variáveis originais inalteradas.
+
+![]()
+
+#### 3.2. Passando Referências de Objetos
+
+Em Java, todos os objetos são armazenados dinamicamente no espaço Heap nos bastidores. Esses objetos são referenciados
+a partir de referências chamadas variáveis de referência.
+
+Um objeto Java, ao contrário dos Primitivos, é armazenado em dois estágios. As variáveis de referência são armazenadas
+na memória stack e o objeto ao qual se referem é armazenado na memória Heap.
+
+Sempre que um objeto é passado como argumento, é criada uma cópia exata da variável de referência que aponta para o
+mesmo local do objeto na memória heap que a variável de referência original.
+
+Como resultado disso, sempre que fizermos alguma alteração no mesmo objeto do método, essa alteração será refletida no
+objeto original. Entretanto, se alocarmos um novo objeto à variável de referência passada, ele não será refletido no
+objeto original.
+
+Vamos tentar compreender isso com a ajuda de um exemplo de código:
+
+```java
+public class NonPrimitivesUnitTest {
+ 
+    @Test
+    public void whenModifyingObjects_thenOriginalObjectChanged() {
+        Foo a = new Foo(1);
+        Foo b = new Foo(1);
+
+        // Before Modification
+        assertEquals(a.num, 1);
+        assertEquals(b.num, 1);
+        
+        modify(a, b);
+        
+        // After Modification
+        assertEquals(a.num, 2);
+        assertEquals(b.num, 1);
+    }
+ 
+    public static void modify(Foo a1, Foo b1) {
+        a1.num++;
+       
+        b1 = new Foo(1);
+        b1.num++;
+    }
+}
+ 
+class Foo {
+    public int num;
+   
+    public Foo(int num) {
+        this.num = num;
+    }
+}
+```
+
+Vamos analisar as afirmações do programa acima. Passamos os objetos no "a" e "b" valor método modificar() que possui o
+mesmo 1. Inicialmente, essas referências de objeto apontam para dois locais distintos de objeto em um espaço de heap:
+
+![]()
+
+Quando essas referências a e b são passadas no método modificar(), ele cria cópias espelhadas das referências a1 e b1
+que apontam para os mesmos objetos antigos:
+
+![]()
+
+No método modificar(), quando modificamos a referência a1 , ela altera o objeto original. Porém, para uma referência b1,
+atribuímos um novo objeto. Então agora está apontando para um novo objeto na memória heap.
+
+Qualquer alteração feita em b1 não refletirá nada no objeto original:
+
+![]()
+
+### 4. Conclusão
+
+Neste artigo, vimos como a passagem de parâmetros é tratada no caso de Primitivos e Não Primitivos.
+
+Aprendemos que a passagem de parâmetros em Java é sempre passagem por valor. No entanto, o contexto muda dependendo se
+estamos lidando com Primitivos ou Objetos:
+
+1. Para tipos primitivos, os parâmetros são passados por valor.
+2. Para tipos de objetos, a referência do objeto é passada por valor.
+
+Passagem por valor como mecanismo de passagem de parâmetros em Java [^6].
+
+[^6]: Parâmetros em Java [site Baeldung](https://abre.ai/g43y).
+
+Orientação Objetos - Métodos pt-05 - Parâmetros tipo primitivo pt-01 [^7].
+
+[^7]: Acesso o vídeo YouTube -> [Maratona Java 48 - Orientação Objetos - Métodos pt 05 - Parâmetros tipo primitivo](https://abre.ai/g43S).
+
+Orientação Objetos - Métodos pt-06 - Parâmetros tipo referência [^8].
+
+[^8]: Acesso o vídeo YouTube -> [Maratona Java 49 - Orientação Objetos - Métodos pt 06 - Parâmetros tipo referência](https://abre.ai/g43U).
+
+rientação Objetos - Métodos pt-07 - Parâmetros tipo referência pt 02 [^9].
+
+[^9]: Acesso o vídeo YouTube -> [Maratona Java 50 - Orientação Objetos - Métodos pt 07 - Parâmetros tipo referência pt-02](https://abre.ai/g44h).
