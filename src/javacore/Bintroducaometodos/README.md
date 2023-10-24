@@ -193,7 +193,7 @@ Orientação Objetos - Métodos pt-01 [^2].
 
 [^2]: Acesso o vídeo YouTube -> [Maratona Java 44 - Orientação Objetos - Métodos pt 01](https://abre.ai/g4Q5).
 
-#
+# Maratona Java 45 - Orientação Objetos - Métodos - Parâmetros
 
 **Parâmetros em Java: Resumo**
 
@@ -257,3 +257,82 @@ Orientação Objetos - Métodos pt-02 - Parâmetros [^1].
 
 [^1]: Acesso o vídeo YouTube -> [Maratona Java 45 - Orientação Objetos - Métodos pt 02 - Parâmetros](https://abre.ai/g4VK).
 
+# Maratona Java 46 - Orientação Objetos - Métodos - Retorno
+
+**Retorno em Métodos em Java: Resumo**
+
+Em Java, o retorno de um método se refere ao valor que o método fornece após sua execução. Aqui estão alguns pontos
+essenciais sobre o retorno de métodos:
+
+### 1. **Sintaxe de Retorno:**
+- A palavra-chave `return` é usada para especificar o valor que o método retorna.
+- Exemplo:
+  ```java
+  int soma(int a, int b) {
+      return a + b;
+  }
+  ```
+
+### 2. **Tipos de Retorno:**
+- Os métodos podem retornar qualquer tipo de dado, incluindo tipos primitivos, objetos e até mesmo `void` (indicando
+que o método não retorna nenhum valor).
+- Exemplo:
+  ```java
+  String cumprimento() {
+      return "Olá, mundo!";
+  }
+  ```
+
+### 3. **Métodos sem Retorno (`void`):**
+- Quando um método não precisa retornar um valor, o tipo de retorno é `void`.
+- Exemplo:
+  ```java
+  void exibirMensagem(String mensagem) {
+      System.out.println(mensagem);
+  }
+  ```
+
+### 4. **Passagem de Valor de Retorno:**
+- O valor retornado por um método pode ser usado diretamente ou atribuído a uma variável.
+- Exemplo:
+  ```java
+  int resultado = soma(3, 4); // resultado agora é 7
+  ```
+
+### 5. **Instrução `return` Múltipla (Java 12+):**
+- A partir do Java 12, é possível usar a instrução `yield` em métodos para retornar um valor de uma expressão.
+- Exemplo:
+  ```java
+  int calcularSoma(int a, int b) {
+      return a + b;
+  }
+  ```
+
+### 6. **Retorno Condicional (Java 8+):**
+- Em Java 8 e posteriores, você pode usar expressões lambda e Streams para implementar retornos condicionais de maneira
+mais concisa.
+- Exemplo:
+  ```java
+  int calcularSoma(int a, int b) {
+      return (a > 0 && b > 0) ? a + b : 0;
+  }
+  ```
+
+### 7. **Exceções em Métodos:**
+- Se um método pode lançar exceções, é importante documentar isso usando a palavra-chave `throws` na declaração do
+método ou usando blocos `try-catch` internos.
+
+### 8. **Métodos Recursivos:**
+- Em Java, métodos podem chamar a si mesmos. Essa técnica é chamada de recursão e é frequentemente usada para resolver
+problemas que podem ser quebrados em subproblemas semelhantes.
+
+Entender como funciona o retorno em métodos é crucial, pois isso permite que você crie funções reutilizáveis que podem
+ser integradas eficientemente em diferentes partes de seu código.
+
+Orientação Objetos - Métodos pt-03 - Retorno pt-01 [^1].
+
+[^1]: Acesso o vídeo YouTube -> [Maratona Java 46 - Orientação Objetos - Métodos pt 03 - Retorno pt-01](https://abre.ai/g4Zi).
+
+Orientação Objetos - Métodos pt-03 - Retorno pt-02 [^2].
+
+[^2]: Acesso o vídeo YouTube -> [Maratona Java 47 - Orientação Objetos - Métodos pt 04 - Retorno pt-02](https://abre.ai/g4ZY).
