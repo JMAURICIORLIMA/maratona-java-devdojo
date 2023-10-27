@@ -533,6 +533,124 @@ Orientação Objetos - Métodos pt-06 - Parâmetros tipo referência [^8].
 
 [^8]: Acesso o vídeo YouTube -> [Maratona Java 49 - Orientação Objetos - Métodos pt 06 - Parâmetros tipo referência](https://abre.ai/g43U).
 
-rientação Objetos - Métodos pt-07 - Parâmetros tipo referência pt 02 [^9].
+Orientação Objetos - Métodos pt-07 - Parâmetros tipo referência pt 02 [^9].
 
 [^9]: Acesso o vídeo YouTube -> [Maratona Java 50 - Orientação Objetos - Métodos pt 07 - Parâmetros tipo referência pt-02](https://abre.ai/g44h).
+
+# Maratona Java 51 - Orientação Objetos - Métodos - Referência this.
+
+### 1. Introdução
+
+Neste tutorial, daremos uma olhada na palavra-chave this Java.
+
+Em Java, esta palavra-chave é uma referência ao objeto atual cujo método está sendo chamado.
+
+Vamos explorar como e quando podemos usar a palavra-chave.
+
+### 2. Desambiguação do sombreamento de campo
+
+A palavra-chave é útil para desambiguar variáveis de instância de parâmetros locais. O motivo mais comum é
+quando temos parâmetros de construtor com o mesmo nome dos campos de instância:
+
+```java
+public class KeywordTest {
+
+    private String name;
+    private int age;
+    
+    public KeywordTest(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+```
+
+Como podemos ver aqui, estamos usando isso com os campos de instância de nome e idade – para distingui-los dos
+parâmetros.
+
+Outro uso é usar isso com o parâmetro oculto ou sombreado no escopo local. Um exemplo de uso pode ser encontrado no
+[artigo Ocultação de variáveis e métodos](https://www.baeldung.com/java-variable-method-hiding).
+
+### 3. Referenciando Construtores da Mesma Classe
+
+A partir de um construtor, podemos usar this() para chamar um construtor diferente da mesma classe. Aqui, usamos this()
+para o encadeamento do construtor para reduzir o uso do código.
+
+O caso de uso mais comum é chamar um construtor padrão do construtor parametrizado:
+
+```java
+public KeywordTest(String name, int age) {
+    this();
+    
+    // the rest of the code
+}
+```
+
+Ou podemos chamar o construtor parametrizado do construtor sem argumento e passar alguns argumentos:
+
+```java
+public KeywordTest() {
+    this("John", 27);
+}
+```
+
+Observe que this() deve ser a primeira instrução no construtor, caso contrário ocorrerá um erro de compilação.
+
+### 4. Passando isso como parâmetro
+
+Aqui temos o método printInstance(), onde o argumento this Keyword é definido:
+
+```java
+public KeywordTest() {
+    printInstance(this);
+}
+
+public void printInstance(KeywordTest thisKeyword) {
+    System.out.println(thisKeyword);
+}
+```
+
+Dentro do construtor, invocamos o método printInstance(). Com this, passamos uma referência para a instância atual.
+
+### 5. Devolvendo isto
+
+Também podemos usar esta palavra-chave para retornar a instância da classe atual do método.
+
+Para não duplicar o código, aqui está um exemplo prático completo de como ele é implementado no [padrão de design do
+construtor.](https://www.baeldung.com/creational-design-patterns)
+
+### 6. A palavra-chave this dentro da classe interna
+
+Também usamos isso para acessar a instância da classe externa de dentro da classe interna:
+
+```java
+public class KeywordTest {
+
+    private String name;
+
+    class ThisInnerClass {
+
+        boolean isInnerClass = true;
+
+        public ThisInnerClass() {
+            KeywordTest thisKeyword = KeywordTest.this;
+            String outerString = KeywordTest.this.name;
+        }
+    }
+}
+```
+
+Aqui, dentro do construtor, podemos obter uma referência à instância KeywordTest com a KeywordTest.this chamada.
+Podemos ir ainda mais fundo e acessar as variáveis de instância como o campo KeywordTest.this.name.
+
+### 7. Conclusão
+
+Neste artigo, exploramos a palavra-chave this em Java.
+
+Orientação Objetos - Métodos pt-08 - Referência this [^10].
+
+[^10]: Acesso o vídeo YouTube -> [Maratona Java 51 - Orientação Objetos - Métodos pt 08 - Referência this](https://abre.ai/g7wM).
+
+Guia para palavra-chave this em java [^11].
+
+[^11]: Acesse o site (em inglês) -> [Guia palavra-chave this em java](https://abre.ai/g7wZ).
