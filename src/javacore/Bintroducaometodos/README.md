@@ -654,3 +654,166 @@ Orientação Objetos - Métodos pt-08 - Referência this [^10].
 Guia para palavra-chave this em java [^11].
 
 [^11]: Acesse o site (em inglês) -> [Guia palavra-chave this em java](https://abre.ai/g7wZ).
+
+# Maratona Java 52 - Orientação Objetos - Métodos - Varargs
+
+### 1.Visão Geral
+
+Neste tutorial, exploraremos a diferença entre método(String… args) e método(String[] args) em Java. Ao longo do
+caminho, examinaremos como passar um array ou uma lista de argumentos de comprimento variável para um método.
+
+### 2. Passando Arrays para Métodos
+
+Nesta seção, mostraremos como declarar um array do tipo String como parâmetro de um método e como passar um array do 
+mesmo tipo como argumento durante uma invocação de método.
+
+Java é uma linguagem de programação de tipo estatístico, o que significa que o tipo da variável é conhecido em tempo de
+compilação. Um programador deve indicar um tipo de variável, seja primitivo ou de referência. Ao definir um método com
+um parâmetro de array, espera-se que declaremos o tipo de array que queremos que seja passado como argumento durante a
+chamada do método.
+
+Vamos ver a sintaxe para definir um parâmetro de array String em um cabeçalho de método:
+
+```java
+void capitalizeNames(String[] args)
+```
+
+Vamos analisar o argumento declarado no cabeçalho do método acima:
+
+* String[] – nome do tipo
+* args – nome do parâmetro
+
+```java
+void capitalizeNames(String[] args) {
+    for(int i = 0; i < args.length; i++){
+       args[i] = args[i].toUpperCase();
+    }
+}
+```
+
+Do exposto acima, o método capitalizeNames() possui um String parâmetro de array args. O cabeçalho do método especifica
+que o método recebe apenas uma referência de array do tipo java.lang.String[] quando chamado.
+
+Em essência, quando encontramos (String[] args) no cabeçalho de um método, devemos entender que o método usa um único
+array do tipo String como argumento quando chamado.
+
+Vejamos um exemplo:
+
+```java
+@Test
+void whenCheckingArgumentClassName_thenNameShouldBeStringArray() {
+    String[] names = {"john", "ade", "kofi", "imo"};
+    assertNotNull(names);
+    assertEquals("java.lang.String[]", names.getClass().getTypeName());
+    capitalizeNames(names);
+}
+```
+
+Quando verificamos o nome da classe do capitalizeNames() argumento do método, names, obtemos java.lang.String[], que
+corresponde ao parâmetro na definição do método. Se tentarmos passar um tipo diferente como argumento para o método,
+obteremos um erro de compilação :
+
+```java
+@Test
+void whenCheckingArgumentClassName_thenNameShouldBeStringArray() {
+    ...
+    int[] evenNumbers = {2, 4, 6, 8};
+    capitalizeNames(evenNumbers);
+}
+```
+
+O trecho de código acima geraria a mensagem de erro do compilador em nosso console:
+
+```java
+incompatible types: int[] cannot be converted to java.lang.String[]
+```
+
+### 3. Listas de argumentos de comprimento variável
+
+Listas de argumentos de comprimento variável, também conhecidas como varargs em Java, nos permitem passar um número
+arbitrário de argumentos do mesmo tipo durante uma chamada de método.
+
+A sintaxe para listas de argumentos de comprimento variável em um método é semelhante a: 
+
+```java
+String[] firstLetterOfWords(String... args)
+```
+
+Vamos analisar o argumento declarado no cabeçalho do método acima:
+
+* String… – digite o nome com reticências
+* args – nome do parâmetro
+
+```java
+String[] firstLetterOfWords(String... args) {
+    String[] firstLetter = new String[args.length];
+    for(int i = 0; i < args.length; i++){
+        firstLetter[i] = String.valueOf(args[i].charAt(0));
+    }
+    return firstLetter;
+}
+```
+
+Declaramos o tipo de parâmetro seguido por reticências (...) e o nome do parâmetro em nossa assinatura de método.
+
+Com listas de argumentos de comprimento variável, podemos adicionar qualquer número de argumentos do mesmo tipo a um
+método porque Java trata os argumentos fornecidos como elementos em um array. Ao adicionar varargs como parte dos
+parâmetros de um método, certifique-se de que o tipo, as reticências e o nome do parâmetro sejam os últimos.
+
+Por exemplo, isso seria incorreto: 
+
+```java
+static String[] someMethod(String... args, int number)
+```
+
+Podemos corrigir isso facilmente trocando a ordem dos argumentos, colocando o varargs por último: parâmetro
+
+```java
+static String[] someMethod(int number, String... args)
+```
+
+Vamos testar o método firstLetterOfWords que escrevemos acima: 
+
+```java
+@Test
+void whenCheckingReturnedObjectClass_thenClassShouldBeStringArray() {
+    assertEquals(String[].class, firstLetterOfWords("football", "basketball", "volleyball").getClass());
+    assertEquals(3, firstLetterOfWords("football", "basketball", "volleyball").length);
+}
+```
+
+Sabemos que o método firstLetterOfWords() usa listas de argumentos de comprimento variável do tipo String por causa das
+reticências, e passamos o mesmo como argumentos. O teste mostra que o método retorna um array quando acessamos seu
+atributo getClass(). Também obtemos 3 quando acessamos a propriedade length do array, que corresponde ao número de
+argumentos passados para ele.
+
+### 4. (String[] args) vs. (String… args)
+
+Argumentos String[] indicam um array do tipo String como parâmetro de método em Java. Muitas vezes é encontrado como um
+parâmetro de array do método principal em classes Java. O parâmetro String[] args no método principal forma um String
+array a partir de argumentos de linha de comando. Ao invocar um método com (String[] args), um array String deve ser
+passado como argumento.
+
+Só podemos ter uma lista de argumentos de comprimento variável ao definir um método. Varargs não se limita apenas ao
+tipo java.lang.String. Podemos ter outros tipos como (int… args) , (double… args) e assim por diante. Nos bastidores,
+Java pega todos os argumentos passados ao invocar um método com varargs e cria um array com eles. No entanto, podemos
+invocar um método com parâmetros varargs sem argumento, caso em que será tratado como um array vazio.
+
+Lembre-se de que args como nome de variável é apenas uma convenção — qualquer outro nome apropriado pode ser usado.
+
+### 5. Conclusão
+
+Neste tutorial, examinamos a diferença entre method(String[] args) e method(String… args). O primeiro é um método com
+um parâmetro de array String, enquanto o último é um método com uma lista de argumentos de comprimento variável
+( varargs ).
+
+Varargs são sempre colocados como o último parâmetro na lista de parâmetros de um método, portanto, um método pode
+declarar apenas um varargs. argumento.
+
+Orientação Objetos - Métodos pt-09 - Varargs [^12].
+
+[^12]: Acesso o vídeo YouTube -> [Maratona Java 52 - Orientação Objetos - Métodos pt 09 - Varargs](https://abre.ai/g8Xa).
+
+Parâmetros de entrada VarArgs vs array em Java [^13].
+
+[^13]: Acesse o site (em inglês) -> [Parâmetros de entrada VarArgs vs array em Java](https://www.baeldung.com/varargs-vs-array).
