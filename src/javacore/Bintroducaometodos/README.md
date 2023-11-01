@@ -817,3 +817,266 @@ Orientação Objetos - Métodos pt-09 - Varargs [^12].
 Parâmetros de entrada VarArgs vs array em Java [^13].
 
 [^13]: Acesse o site (em inglês) -> [Parâmetros de entrada VarArgs vs array em Java](https://www.baeldung.com/varargs-vs-array).
+
+# Maratona Java 53, 54 e 55 - Orientação Objetos - Modificadores de acesso private, get e set pt 01, 02 e 03.
+
+**Acoplamento em Java:**
+
+Em programação orientada a objetos, acoplamento refere-se ao grau de dependência entre diferentes partes de um sistema.
+Em Java, onde os objetos interagem uns com os outros, o acoplamento descreve como as classes ou componentes de software
+estão interligados.
+
+### Tipos de Acoplamento:
+
+1. **Acoplamento Forte:**
+  - Classes fortemente acopladas têm uma alta dependência uma da outra.
+  - Uma mudança em uma classe pode afetar significativamente outras classes.
+  - Isso pode tornar o sistema mais difícil de entender, manter e modificar.
+
+2. **Acoplamento Fraco:**
+  - Classes fracamente acopladas têm uma baixa dependência.
+  - Uma classe pode ser modificada sem afetar muito as outras classes.
+  - Isso resulta em um sistema mais flexível e fácil de manter.
+
+### Estratégias para Reduzir o Acoplamento:
+
+1. **Encapsulamento:**
+  - Ocultar detalhes internos de uma classe e expor apenas uma interface.
+  - Outras classes interagem com essa interface, não com os detalhes internos.
+
+2. **Injeção de Dependência:**
+  - Em vez de criar instâncias de objetos dentro de uma classe, eles são fornecidos externamente.
+  - Isso reduz a dependência direta entre classes.
+
+3. **Interfaces:**
+  - Programar para interfaces em vez de implementações concretas.
+  - Classes dependem de interfaces, não de implementações específicas.
+
+4. **Eventos e Listeners:**
+  - Usar padrões de projeto como Observador onde objetos interessados se registram para receber notificações.
+  - Reduz a dependência direta entre observadores e observáveis.
+
+5. **Inversão de Controle (IoC):**
+  - Transferir o controle da criação de objetos para uma estrutura externa (contêiner IoC).
+  - Exemplos incluem Spring Framework.
+
+### Benefícios de Reduzir o Acoplamento:
+
+1. **Manutenção Facilitada:**
+  - Mudanças em uma classe têm menos probabilidade de impactar outras.
+  - Isso facilita a manutenção e evolução do código.
+
+2. **Reusabilidade:**
+  - Classes fracamente acopladas podem ser mais facilmente reutilizadas em diferentes contextos.
+
+3. **Testabilidade:**
+  - Classes independentes são mais fáceis de testar isoladamente.
+
+4. **Flexibilidade e Escalabilidade:**
+  - O código é mais flexível para mudanças e é escalável para sistemas maiores.
+
+5. **Entendimento Simples:**
+  - O código é mais fácil de entender porque há menos dependências complexas.
+
+Em resumo, o acoplamento é uma consideração chave ao projetar sistemas em Java, e reduzir o acoplamento é geralmente um
+objetivo desejado para criar sistemas mais flexíveis e fáceis de manter.
+#
+**Modificadores de Acesso em Java:**
+
+Em Java, os modificadores de acesso são palavras-chave que determinam a visibilidade de classes, métodos, variáveis e
+construtores em diferentes partes de um programa. Eles ajudam a controlar o acesso aos membros de uma classe. Existem
+quatro tipos principais de modificadores de acesso:
+
+### 1. Public (`public`):
+- **Acesso Global:**
+  - Membros marcados como `public` são acessíveis de qualquer lugar.
+  - Podem ser acessados por qualquer classe ou pacote.
+
+```java
+public class Exemplo {
+    public int numero;  // Atributo público
+    public void metodoPublico() {
+        // Método público
+    }
+}
+```
+
+### 2. Private (`private`):
+- **Acesso Restrito:**
+  - Membros marcados como `private` são acessíveis apenas dentro da própria classe.
+  - Não são visíveis fora da classe, mesmo para subclasses.
+
+```java
+public class Exemplo {
+    private int numero;  // Atributo privado
+    private void metodoPrivado() {
+        // Método privado
+    }
+}
+```
+
+### 3. Protected (`protected`):
+- **Acesso para Subclasses:**
+  - Membros marcados como `protected` são acessíveis dentro da mesma classe, pacote e por subclasses.
+  - Não são acessíveis fora do pacote se não forem subclasses.
+
+```java
+public class Exemplo {
+    protected int numero;  // Atributo protegido
+    protected void metodoProtegido() {
+        // Método protegido
+    }
+}
+```
+
+### 4. Default (Sem Modificador):
+- **Acesso Padrão (Pacote):**
+  - Se nenhum modificador for especificado, é considerado o acesso padrão.
+  - Membros são acessíveis apenas no mesmo pacote.
+
+```java
+class Exemplo {
+    int numero;  // Atributo com acesso padrão
+    void metodoPadrao() {
+        // Método com acesso padrão
+    }
+}
+```
+
+### Resumo:
+- O modificador `public` oferece o maior nível de acesso.
+- O modificador `private` oferece o menor nível de acesso.
+- Os modificadores `protected` e padrão fornecem níveis intermediários.
+
+### Dicas:
+- **Encapsulamento:**
+  - Em geral, é uma boa prática encapsular membros de uma classe usando `private` e fornecer métodos públicos (`getters`
+  e `setters`) para acessá-los.
+
+```java
+public class Exemplo {
+    private int numero;
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+}
+```
+
+- **Princípio da Menor Exposição (Princípio do Mínimo Exposto):**
+  - Evite expor mais do que é necessário. Limite o acesso aos membros da classe ao mínimo necessário para realizar suas
+  tarefas.
+#
+**Métodos Getters e Setters em Java:**
+
+Os métodos `getters` e `setters` são métodos especiais usados para obter e definir valores em objetos. Eles são uma
+parte fundamental do conceito de encapsulamento em programação orientada a objetos. Vamos entender cada um deles:
+
+### 1. Getter (Método de Acesso):
+
+- **Objetivo:**
+  - Usado para obter o valor de um atributo privado.
+
+- **Sintaxe Típica:**
+  - O nome começa com `get` seguido pelo nome do atributo com a primeira letra em maiúscula.
+
+```java
+public class Exemplo {
+    private int idade;
+
+    public int getIdade() {
+        return idade;
+    }
+}
+```
+
+### 2. Setter (Método Modificador):
+
+- **Objetivo:**
+  - Usado para definir o valor de um atributo privado.
+
+- **Sintaxe Típica:**
+  - O nome começa com `set` seguido pelo nome do atributo com a primeira letra em maiúscula. Normalmente, tem um
+  parâmetro para aceitar o novo valor.
+
+```java
+public class Exemplo {
+    private int idade;
+
+    public void setIdade(int novaIdade) {
+        idade = novaIdade;
+    }
+}
+```
+
+### Exemplo Completo com Encapsulamento:
+
+```java
+public class Pessoa {
+    // Atributos privados
+    private String nome;
+    private int idade;
+
+    // Métodos getters e setters
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String novoNome) {
+        nome = novoNome;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int novaIdade) {
+        idade = novaIdade;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Criando uma instância de Pessoa
+        Pessoa pessoa = new Pessoa();
+
+        // Usando os setters para definir valores
+        pessoa.setNome("Alice");
+        pessoa.setIdade(25);
+
+        // Usando os getters para obter valores
+        System.out.println("Nome: " + pessoa.getNome());
+        System.out.println("Idade: " + pessoa.getIdade());
+    }
+}
+```
+
+### Vantagens do Uso de Getters e Setters:
+
+1. **Encapsulamento:**
+  - Os atributos são protegidos e podem ser acessados e modificados apenas por meio de métodos controlados.
+
+2. **Controle de Acesso:**
+  - Permite validar ou controlar o acesso e modificação de atributos.
+
+3. **Flexibilidade:**
+  - Facilita futuras alterações na implementação interna da classe sem afetar o código externo.
+
+4. **Manutenção do Código:**
+  - Facilita a manutenção do código e a detecção de possíveis erros.
+
+Orientação Objetos - Modificador de acesso private, get e set pt 01 [^14].
+
+[^14]: Acesso o vídeo YouTube -> [Maratona Java 54 - Orientação Objetos - Modificador de acesso private, get e set pt 01](https://abre.ai/g9EG).
+
+Orientação Objetos - Modificador de acesso private, get e set pt 02 [^15].
+
+[^15]: Acesso o vídeo YouTube -> [Maratona Java 55 - Orientação Objetos - Modificador de acesso private, get e set pt 02](https://abre.ai/g9EI).
+
+Orientação Objetos - Modificador de acesso private, get e set pt 03 [^16].
+
+[^16]: Acesso o vídeo YouTube -> [Maratona Java 56 - Orientação Objetos - Modificador de acesso private, get e set pt 03](https://abre.ai/g9EK).
