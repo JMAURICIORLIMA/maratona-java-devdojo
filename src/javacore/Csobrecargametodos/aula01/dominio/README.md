@@ -4,7 +4,7 @@ Orientação Objetos - Orientação Objetos - Sobrecarga de métodos [^01].
 
 Sobrecarga e substituição de método em Java [^02]
 
-[^02]: Baeldung "em inglês" -> [Sobrecarga e substituição de método em Java]K(https://www.baeldung.com/java-method-overload-override)
+[^02]: Baeldung "em inglês" -> [Sobrecarga e substituição de método em Java](https://www.baeldung.com/java-method-overload-override)
 
 ### 1. Visão Geral
 
