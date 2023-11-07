@@ -211,3 +211,58 @@ Não fazer isso resultará em um erro de compilação.
 
 Fizemos um tour pelas diferentes maneiras pelas quais os construtores constroem objetos. Quando usadas criteriosamente,
 as construções formam os blocos básicos de construção do design Orientado a Objetos em Java.
+
+# Contrutores pt 02 - Sobrecarga
+
+58 - Orientação Objetos - Construtores pt 02 - Sobrecarga [^03]
+
+[^03]: Acesso o vídeo YouTube ->  [59 - Orientação Objetos - Construtores pt 02 - Sobrecarga](https://abre.ai/hdse)
+
+Aqui está um exemplo de sobrecarga de construtores usando o `this` em Java:
+
+```java
+public class ExemploSobrecargaConstrutores {
+    private String nome;
+    private int idade;
+    private double salario;
+    private boolean estudante;
+
+    // Construtor vazio
+    public ExemploSobrecargaConstrutores() {
+        System.out.println("Dentro do construtor vazio");
+    }
+
+    // Construtor com 3 parâmetros, chamando o construtor vazio
+    public ExemploSobrecargaConstrutores(String nome, int idade, double salario) {
+        this();  // Chamando o construtor vazio
+        this.nome = nome;
+        this.idade = idade;
+        this.salario = salario;
+    }
+
+    // Construtor com 4 parâmetros, chamando o construtor com 3 parâmetros
+    public ExemploSobrecargaConstrutores(String nome, int idade, double salario, boolean estudante) {
+        this(nome, idade, salario);  // Chamando o construtor com 3 parâmetros
+        this.estudante = estudante;
+    }
+
+    // Outros métodos e getters/setters...
+
+    public static void main(String[] args) {
+        // Exemplos de uso dos construtores
+        ExemploSobrecargaConstrutores obj1 = new ExemploSobrecargaConstrutores();
+        ExemploSobrecargaConstrutores obj2 = new ExemploSobrecargaConstrutores("Alice", 25, 50000);
+        ExemploSobrecargaConstrutores obj3 = new ExemploSobrecargaConstrutores("Bob", 30, 60000, true);
+    }
+}
+```
+
+Neste exemplo:
+
+- O construtor vazio imprime a mensagem quando é chamado.
+- O construtor com 3 parâmetros chama o construtor vazio usando `this()` antes de executar suas próprias operações.
+- O construtor com 4 parâmetros chama o construtor com 3 parâmetros usando `this(nome, idade, salario)` antes de
+  executar suas próprias operações.
+
+Essa é uma maneira comum de estruturar construtores quando você deseja reutilizar parte da lógica de inicialização em
+diferentes construtores.
