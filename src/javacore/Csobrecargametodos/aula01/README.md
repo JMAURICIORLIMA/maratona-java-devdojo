@@ -1,10 +1,13 @@
-Orientação Objetos - Orientação Objetos - Sobrecarga de métodos [^01].
+Orientação Objetos - Sobrecarga de métodos [^01].
 
 [^01]: Acesso o vídeo YouTube -> [Maratona Java 57 - Orientação Objetos - Sobrecarga de métodos](https://abre.ai/hcpW).
 
 Sobrecarga e substituição de método em Java [^02]
 
-[^02]: Baeldung "em inglês" -> [Sobrecarga e substituição de método em Java](https://www.baeldung.com/java-method-overload-override)
+[^02]: Baeldung "em
+inglês" -> [Sobrecarga e substituição de método em Java](https://www.baeldung.com/java-method-overload-override)
+
+# 58 - Orientação Objetos - Construtores pt 01
 
 ### 1. Visão Geral
 
@@ -36,11 +39,11 @@ implementações que recebem números diferentes de argumentos:
 
 ```java
 public class Multiplier {
-    
+
     public int multiply(int a, int b) {
         return a * b;
     }
-    
+
     public int multiply(int a, int b, int c) {
         return a * b * c;
     }
@@ -53,11 +56,11 @@ Da mesma forma, podemos sobrecarregar o método multiplicar() fazendo-o aceitar 
 
 ```java
 public class Multiplier {
-    
+
     public int multiply(int a, int b) {
         return a * b;
     }
-    
+
     public double multiply(double a, double b) {
         return a * b;
     }
@@ -68,15 +71,15 @@ Além disso, é legítimo definir a classe Multiplicador com ambos os tipos de s
 
 ```java
 public class Multiplier {
-    
+
     public int multiply(int a, int b) {
         return a * b;
     }
-    
+
     public int multiply(int a, int b, int c) {
         return a * b * c;
     }
-    
+
     public double multiply(double a, double b) {
         return a * b;
     }
@@ -89,13 +92,13 @@ de retorno.
 Para entender o porquê – vamos considerar o seguinte exemplo:
 
 ```java
-public int multiply(int a, int b) { 
-    return a * b; 
-}
- 
-public double multiply(int a, int b) { 
-    return a * b; 
-}
+public int multiply(int a,int b){
+        return a*b;
+        }
+
+public double multiply(int a,int b){
+        return a*b;
+        }
 ```
 
 Nesse caso, o código simplesmente não seria compilado por causa da ambiguidade na chamada do método – o compilador não
@@ -113,13 +116,13 @@ Para entender mais claramente como funciona a promoção de tipo, considere as s
 multiplicar():
 
 ```java
-public double multiply(int a, long b) {
-    return a * b;
-}
+public double multiply(int a,long b){
+        return a*b;
+        }
 
-public int multiply(int a, int b, int c) {
-    return a * b * c;
-}
+public int multiply(int a,int b,int c){
+        return a*b*c;
+        }
 ```
 
 Agora, chamar o método com dois argumentos int resultará na promoção do segundo argumento para long, pois neste caso
@@ -129,9 +132,9 @@ Vejamos um teste de unidade rápido para demonstrar a promoção do tipo:
 
 ```java
 @Test
-public void whenCalledMultiplyAndNoMatching_thenTypePromotion() {
-    assertThat(multiplier.multiply(10, 10)).isEqualTo(100.0);
-}
+public void whenCalledMultiplyAndNoMatching_thenTypePromotion(){
+        assertThat(multiplier.multiply(10,10)).isEqualTo(100.0);
+        }
 ```
 
 Por outro lado, se chamarmos o método com uma implementação correspondente, a promoção de tipo simplesmente não
@@ -139,9 +142,9 @@ ocorrerá:
 
 ```java
 @Test
-public void whenCalledMultiplyAndMatching_thenNoTypePromotion() {
-    assertThat(multiplier.multiply(10, 10, 10)).isEqualTo(1000);
-}
+public void whenCalledMultiplyAndMatching_thenNoTypePromotion(){
+        assertThat(multiplier.multiply(10,10,10)).isEqualTo(1000);
+        }
 ```
 
 Aqui está um resumo das regras de promoção de tipo que se aplicam à sobrecarga de métodos:
@@ -177,15 +180,15 @@ Aqui está a classe base:
 
 ```java
 public class Vehicle {
-    
+
     public String accelerate(long mph) {
         return "The vehicle accelerates at : " + mph + " MPH.";
     }
-    
+
     public String stop() {
         return "The vehicle has stopped.";
     }
-    
+
     public String run() {
         return "The vehicle is running.";
     }
@@ -214,40 +217,40 @@ Vamos escrever alguns testes unitários para verificar as Vehicle e Car : classe
 
 ```java
 @Test
-public void whenCalledAccelerate_thenOneAssertion() {
-    assertThat(vehicle.accelerate(100))
-      .isEqualTo("The vehicle accelerates at : 100 MPH.");
-}
-    
-@Test
-public void whenCalledRun_thenOneAssertion() {
-    assertThat(vehicle.run())
-      .isEqualTo("The vehicle is running.");
-}
-    
-@Test
-public void whenCalledStop_thenOneAssertion() {
-    assertThat(vehicle.stop())
-      .isEqualTo("The vehicle has stopped.");
-}
+public void whenCalledAccelerate_thenOneAssertion(){
+        assertThat(vehicle.accelerate(100))
+        .isEqualTo("The vehicle accelerates at : 100 MPH.");
+        }
 
 @Test
-public void whenCalledAccelerate_thenOneAssertion() {
-    assertThat(car.accelerate(80))
-      .isEqualTo("The car accelerates at : 80 MPH.");
-}
-    
+public void whenCalledRun_thenOneAssertion(){
+        assertThat(vehicle.run())
+        .isEqualTo("The vehicle is running.");
+        }
+
 @Test
-public void whenCalledRun_thenOneAssertion() {
-    assertThat(car.run())
-      .isEqualTo("The vehicle is running.");
-}
-    
+public void whenCalledStop_thenOneAssertion(){
+        assertThat(vehicle.stop())
+        .isEqualTo("The vehicle has stopped.");
+        }
+
 @Test
-public void whenCalledStop_thenOneAssertion() {
-    assertThat(car.stop())
-      .isEqualTo("The vehicle has stopped.");
-}
+public void whenCalledAccelerate_thenOneAssertion(){
+        assertThat(car.accelerate(80))
+        .isEqualTo("The car accelerates at : 80 MPH.");
+        }
+
+@Test
+public void whenCalledRun_thenOneAssertion(){
+        assertThat(car.run())
+        .isEqualTo("The vehicle is running.");
+        }
+
+@Test
+public void whenCalledStop_thenOneAssertion(){
+        assertThat(car.stop())
+        .isEqualTo("The vehicle has stopped.");
+        }
 ```
 
 Agora, vamos ver alguns testes de unidade que mostram como os métodos run() e stop(), que não são substituídos,
@@ -255,14 +258,14 @@ retornam valores iguais para Car e Vehicle :
 
 ```java
 @Test
-public void givenVehicleCarInstances_whenCalledRun_thenEqual() {
-    assertThat(vehicle.run()).isEqualTo(car.run());
-}
- 
+public void givenVehicleCarInstances_whenCalledRun_thenEqual(){
+        assertThat(vehicle.run()).isEqualTo(car.run());
+        }
+
 @Test
-public void givenVehicleCarInstances_whenCalledStop_thenEqual() {
-   assertThat(vehicle.stop()).isEqualTo(car.stop());
-}
+public void givenVehicleCarInstances_whenCalledStop_thenEqual(){
+        assertThat(vehicle.stop()).isEqualTo(car.stop());
+        }
 ```
 
 No nosso caso, temos acesso ao código-fonte de ambas as classes, então podemos ver claramente que chamar o método
@@ -273,10 +276,10 @@ Portanto, o teste a seguir demonstra que o método substituído é invocado para
 
 ```java
 @Test
-public void whenCalledAccelerateWithSameArgument_thenNotEqual() {
-    assertThat(vehicle.accelerate(100))
-      .isNotEqualTo(car.accelerate(100));
-}
+public void whenCalledAccelerateWithSameArgument_thenNotEqual(){
+        assertThat(vehicle.accelerate(100))
+        .isNotEqualTo(car.accelerate(100));
+        }
 ```
 
 **3.1. Substituibilidade de tipo**
