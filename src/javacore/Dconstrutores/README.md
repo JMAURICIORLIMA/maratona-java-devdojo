@@ -1,3 +1,5 @@
+# 58 - Orientação Objetos - Construtores pt 01
+
 Um guia para construtores em Java [^01]
 
 [^01]: Baeldung "em inglês" ->  [Um guia para construtores em Java](https://www.baeldung.com/java-constructors)
@@ -6,7 +8,6 @@ Um guia para construtores em Java [^01]
 
 [^02]: Acesso o vídeo YouTube ->  [58 - Orientação Objetos - Construtores pt 01](https://abre.ai/hcUZ)
 
-# 58 - Orientação Objetos - Construtores pt 01
 
 ### 1. Introdução
 
@@ -214,7 +215,7 @@ as construções formam os blocos básicos de construção do design Orientado a
 
 # Contrutores pt 02 - Sobrecarga
 
-58 - Orientação Objetos - Construtores pt 02 - Sobrecarga [^03]
+59 - Orientação Objetos - Construtores pt 02 - Sobrecarga [^03]
 
 [^03]: Acesso o vídeo YouTube ->  [59 - Orientação Objetos - Construtores pt 02 - Sobrecarga](https://abre.ai/hdse)
 
