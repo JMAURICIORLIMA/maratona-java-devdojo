@@ -311,3 +311,99 @@ Neste exemplo:
 
 Assim como no exemplo anterior, esta é uma simplificação, e em situações mais complexas, outras considerações e práticas
 de programação seriam necessárias.
+#
+67 - Orientação Obejtos - Associação pt 04 - Associação bidirecional [^04]
+
+[^04]: Acesse o vídeo
+YouTube -> [67 - Orientação Obejtos - Associação pt 04 - Associação bidirecional](https://abre.ai/hkEh)
+
+**Associação Bidirecional:**
+
+Na associação bidirecional, duas classes estão associadas de tal forma que ambas conhecem uma à outra. Vamos usar um
+exemplo para entender isso.
+
+**Exemplo:**
+Considere um modelo de escola com duas classes principais: `Estudante` e `Turma`. Cada estudante está associado a uma
+turma, e uma turma tem vários estudantes. Esta é uma associação bidirecional.
+
+**Implementação em Java:**
+
+```java
+import java.util.List;
+import java.util.ArrayList;
+
+class Estudante {
+    private String nome;
+    private Turma turma;
+
+    public Estudante(String nome) {
+        this.nome = nome;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public Turma getTurma() {
+        return turma;
+    }
+
+    public void associarTurma(Turma turma) {
+        this.turma = turma;
+    }
+}
+
+class Turma {
+    private String nome;
+    private List<Estudante> estudantes;
+
+    public Turma(String nome) {
+        this.nome = nome;
+        this.estudantes = new ArrayList<>();
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void adicionarEstudante(Estudante estudante) {
+        estudantes.add(estudante);
+        estudante.associarTurma(this);
+    }
+
+    public List<Estudante> getEstudantes() {
+        return estudantes;
+    }
+}
+
+public class Escola {
+    public static void main(String[] args) {
+        Turma turma = new Turma("Matemática");
+
+        Estudante estudante1 = new Estudante("Alice");
+        Estudante estudante2 = new Estudante("Bob");
+
+        turma.adicionarEstudante(estudante1);
+        turma.adicionarEstudante(estudante2);
+
+        System.out.println("Turma: " + turma.getNome());
+        System.out.println("Estudantes na Turma:");
+        for (Estudante estudante : turma.getEstudantes()) {
+            System.out.println("- " + estudante.getNome());
+        }
+    }
+}
+```
+
+Neste exemplo:
+
+- A classe `Estudante` tem uma referência para uma `Turma` (`Turma turma`).
+- A classe `Turma` mantém uma lista de estudantes (`List<Estudante> estudantes`) e cada estudante mantém uma referência
+  à sua turma (`this.turma = turma;` no método `associarTurma`).
+- A classe `Turma` possui um método `adicionarEstudante` que adiciona um estudante à lista e também associa a turma ao
+  estudante.
+- O programa principal (`Escola`) cria uma turma, adiciona dois estudantes a essa turma e imprime os estudantes
+  associados à turma.
+
+Essa é uma forma de associação bidirecional, onde ambas as classes têm conhecimento uma da outra. Isso permite navegar
+facilmente de um objeto para outro em ambas as direções.
