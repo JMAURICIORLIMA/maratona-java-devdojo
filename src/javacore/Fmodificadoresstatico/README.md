@@ -86,7 +86,6 @@ métodos que devem ser compartilhados por todas as instâncias da classe.
 
 [^02]: Acesso o vídeo YouTube ->  [62 - Orientação Objetos - Métodos estáticos](https://abre.ai/hjXy)
 
-
 **Métodos Estáticos em Java: Definição e Exemplos**
 
 Em Java, um método estático é um método que pertence à classe e não a uma instância específica dessa classe. Isso
@@ -174,3 +173,59 @@ public class Exemplo {
 Os métodos estáticos são úteis quando a lógica do método não depende do estado de uma instância específica da classe,
 mas sim de parâmetros passados ou de variáveis estáticas da própria classe. Eles são chamados diretamente usando o nome
 da classe, sem a necessidade de criar um objeto da classe.
+
+#
+
+63 - Orientação Objetos - Bloco de inicialização estático [^03]
+
+[^03]: Acesso o vídeo YouTube ->  [63 - Orientação Objetos - Bloco de inicialização estático](https://abre.ai/hj8I)
+
+Em Java, um bloco de inicialização estático é um bloco de código usado para inicializar variáveis estáticas de uma
+classe. Este bloco é executado quando a classe é carregada na memória. Vamos ver um exemplo:
+
+```java
+public class Exemplo {
+    // Variável estática
+    static int valorEstatico;
+
+    // Bloco de inicialização estático
+    static {
+        // Lógica de inicialização
+        valorEstatico = 42;
+        System.out.println("Bloco de inicialização estático executado.");
+    }
+
+    // Outros membros da classe...
+}
+```
+
+Neste exemplo, `valorEstatico` é uma variável estática e o bloco de inicialização estático é usado para inicializá-la. O
+bloco estático será executado assim que a classe for carregada, e a mensagem "Bloco de inicialização estático
+executado." será impressa.
+
+Principais características do bloco de inicialização estático:
+
+1. **Execução Única:** O bloco de inicialização estático é executado apenas uma vez quando a classe é carregada.
+
+2. **Inicialização de Variáveis Estáticas:** É comumente usado para inicializar variáveis estáticas, embora também possa
+   conter outras lógicas de inicialização.
+
+3. **Sintaxe:** Usa a palavra-chave `static` seguida por chaves `{}` que contêm o código a ser executado.
+
+Exemplo de uso:
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        // A classe é carregada quando referenciamos algo estático
+        System.out.println("Valor estático: " + Exemplo.valorEstatico);
+
+        // Saída:
+        // Bloco de inicialização estático executado.
+        // Valor estático: 42
+    }
+}
+```
+
+Note que o bloco de inicialização estático é executado antes de qualquer outra parte da classe quando ela é carregada,
+garantindo que a inicialização ocorra antes do acesso a qualquer membro estático da classe.
