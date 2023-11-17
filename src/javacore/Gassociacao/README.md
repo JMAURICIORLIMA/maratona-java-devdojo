@@ -228,3 +228,86 @@ Neste exemplo:
 
 Lembre-se de que este é um exemplo simplificado, e na prática, você precisaria lidar com mais complexidades, como
 tratamento de exceções, persistência de dados, entre outros.
+#
+66 - Orientação Obejtos - Associação pt 03 - Associação unidirecional muitos para um [^03]
+
+[^03]: Acesse o vídeo
+YouTube -> [66 - Orientação Obejtos - Associação pt 03 - Associação unidirecional muitos para um](https://abre.ai/hkB2)
+
+**Associação Unidirecional Muitos-para-Um:**
+
+Na associação unidirecional muitos-para-um, várias instâncias de uma classe (a classe "muitos") estão associadas a uma
+única instância de outra classe (a classe "um"). Vamos usar um exemplo para ilustrar isso:
+
+**Exemplo:**
+Suponha um sistema de blog onde temos duas classes principais: `Post` e `Autor`. Uma abordagem unidirecional
+muitos-para-um pode ser estabelecida entre `Post` e `Autor`. Vários posts podem ter um único autor, mas um autor está
+associado a vários posts.
+
+**Implementação em Java:**
+
+```java
+import java.util.List;
+import java.util.ArrayList;
+
+class Post {
+    private String titulo;
+    private String conteudo;
+    private Autor autor;
+
+    public Post(String titulo, String conteudo, Autor autor) {
+        this.titulo = titulo;
+        this.conteudo = conteudo;
+        this.autor = autor;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getConteudo() {
+        return conteudo;
+    }
+
+    public Autor getAutor() {
+        return autor;
+    }
+}
+
+class Autor {
+    private final String nome;
+
+    public Autor(String nome) {
+        this.nome = nome;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+}
+
+public class Blog {
+    public static void main(String[] args) {
+        Autor autor = new Autor("Carlos");
+
+        Post post1 = new Post("Java Basics", "Introduction to Java programming.", autor);
+        Post post2 = new Post("OOP Principles", "Understanding Object-Oriented Programming.", autor);
+
+        System.out.println("Autor: " + autor.getNome());
+        System.out.println("Posts:");
+        System.out.println("- " + post1.getTitulo());
+        System.out.println("- " + post2.getTitulo());
+    }
+}
+```
+
+Neste exemplo:
+
+- A classe `Post` tem uma referência para um `Autor` (`Autor autor`).
+- O construtor do `Post` exige um autor ao criar um novo post.
+- A classe `Autor` é simples e apenas armazena o nome do autor.
+- O programa principal (`Blog`) demonstra como criar um autor, criar posts associados a esse autor e exibir as
+  informações.
+
+Assim como no exemplo anterior, esta é uma simplificação, e em situações mais complexas, outras considerações e práticas
+de programação seriam necessárias.
