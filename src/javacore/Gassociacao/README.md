@@ -73,3 +73,158 @@ Neste exemplo:
 Este é um exemplo simples de associação em que uma classe (`Turma`) contém uma coleção de objetos de outra
 classe (`Aluno`). Essa coleção poderia ser um array, uma lista ou qualquer outra estrutura de dados, dependendo das
 necessidades do programa.
+#
+65 - Orientação Obejtos - Associação pt 02 - Associação unidirecional um para muitos [^02]
+
+[^02]: Acesse o vídeo
+YouTube -> [65 - Orientação Obejtos - Associação pt 02 - Associação unidirecional um para muitos](https://abre.ai/hkA0)
+
+**Associação em Programação Orientada a Objetos (POO):**
+
+**Definições de tipos de associações**
+
+A associação é um conceito chave em programação orientada a objetos, representando a relação entre classes e objetos.
+Essa relação pode ser classificada em diferentes tipos, cada um descrevendo a natureza e a cardinalidade da associação.
+Vamos explorar esses tipos:
+
+### 1. **Associação Binária:**
+
+- **Definição:** Relação entre dois tipos de objetos.
+- **Exemplo:** Relacionamento entre `Carro` e `Motor`.
+
+### 2. **Associação de Agregação:**
+
+- **Definição:** Uma forma específica de associação binária indicando que uma classe é parte de outra classe.
+- **Exemplo:** Uma `RodadeCarro` é parte de um `Carro`.
+
+### 3. **Associação de Composição:**
+
+- **Definição:** Uma forma mais forte de agregação, indicando que uma classe é composta por outra classe.
+- **Exemplo:** Um `Motor` é uma parte vital de um `Carro`. Se o `Carro` for destruído, o `Motor` também será.
+
+### 4. **Associação Bidirecional:**
+
+- **Definição:** Ambas as classes podem interagir entre si.
+- **Exemplo:** Relacionamento entre `Professor` e `Aluno`.
+
+### 5. **Associação Unidirecional:**
+
+- **Definição:** A relação entre as classes ocorre em uma única direção.
+- **Exemplo:** Apenas o `Aluno` conhece o `Professor`, mas não o contrário.
+
+### 6. **Associação Multiplicidade:**
+
+- **Definição:** Indica quantos objetos de uma classe estão associados a quantos objetos da outra classe.
+- **Exemplo:** Um `Aluno` pode ter várias `Matérias` (1-n).
+
+### 7. **Associação Reflexiva:**
+
+- **Definição:** Uma classe está associada a ela mesma.
+- **Exemplo:** Relacionamento entre `Pessoa` e `Amigo`.
+
+### 8. **Associação de Navegação:**
+
+- **Definição:** Descreve se uma classe pode "navegar" para a outra.
+- **Exemplo:** `Pessoa` pode navegar para `Endereço`.
+
+### 9. **Associação de Dependência:**
+
+- **Definição:** Uma classe depende de outra se a alteração em uma pode afetar a outra.
+- **Exemplo:** `Pedido` depende de `Produto`.
+
+### 10. **Associação de Agregação Fraca:**
+
+- **Definição:** Um objeto pode existir independentemente do outro.
+- **Exemplo:** Uma `Escola` pode ter ou não `Alunos`.
+
+### 11. **Associação de Agregação Forte:**
+
+- **Definição:** Um objeto não pode existir independentemente do outro.
+- **Exemplo:** Uma `Mão` não pode existir sem um `Corpo`.
+
+### 12. **Associação de Canal Único:**
+
+- **Definição:** Uma classe é conectada a outra por meio de um único caminho.
+- **Exemplo:** Relacionamento de canal único entre `Pessoa` e `Passaporte`.
+
+Estas são generalizações e as implementações podem variar dependendo da linguagem de programação e do design específico
+do sistema.
+#
+**Associação Unidirecional Um-para-Muitos:**
+
+Na associação unidirecional um-para-muitos, uma classe (a classe "um") está associada a várias instâncias de outra
+classe (a classe "muitos"). Vamos usar um exemplo para ilustrar isso:
+
+**Exemplo:**
+Imagine um sistema de uma escola, onde temos duas classes principais: `Professor` e `Aluno`. Uma abordagem unidirecional
+um-para-muitos pode ser estabelecida entre `Professor` e `Aluno`. Um professor pode ter vários alunos, mas um aluno tem
+apenas um professor.
+
+**Implementação em Java:**
+
+```java
+import java.util.List;
+import java.util.ArrayList;
+
+class Professor {
+    private String nome;
+    private List<Aluno> alunos;
+
+    public Professor(String nome) {
+        this.nome = nome;
+        this.alunos = new ArrayList<>();
+    }
+
+    public void adicionarAluno(Aluno aluno) {
+        alunos.add(aluno);
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public List<Aluno> getAlunos() {
+        return alunos;
+    }
+}
+
+class Aluno {
+    private String nome;
+
+    public Aluno(String nome) {
+        this.nome = nome;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+}
+
+public class Escola {
+    public static void main(String[] args) {
+        Professor professor = new Professor("Dr. Silva");
+
+        Aluno aluno1 = new Aluno("João");
+        Aluno aluno2 = new Aluno("Maria");
+
+        professor.adicionarAluno(aluno1);
+        professor.adicionarAluno(aluno2);
+
+        System.out.println("Professor: " + professor.getNome());
+        System.out.println("Alunos:");
+        for (Aluno aluno : professor.getAlunos()) {
+            System.out.println("- " + aluno.getNome());
+        }
+    }
+}
+```
+
+Neste exemplo:
+
+- A classe `Professor` tem uma lista de alunos (`List<Aluno> alunos`).
+- O método `adicionarAluno` permite que um professor adicione alunos à sua lista.
+- A classe `Aluno` é simples e apenas armazena o nome do aluno.
+- O programa principal (`Escola`) demonstra como criar um professor, adicionar alunos a ele e exibir as informações.
+
+Lembre-se de que este é um exemplo simplificado, e na prática, você precisaria lidar com mais complexidades, como
+tratamento de exceções, persistência de dados, entre outros.
