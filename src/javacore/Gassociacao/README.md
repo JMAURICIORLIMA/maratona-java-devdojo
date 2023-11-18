@@ -73,7 +73,9 @@ Neste exemplo:
 Este é um exemplo simples de associação em que uma classe (`Turma`) contém uma coleção de objetos de outra
 classe (`Aluno`). Essa coleção poderia ser um array, uma lista ou qualquer outra estrutura de dados, dependendo das
 necessidades do programa.
+
 #
+
 65 - Orientação Obejtos - Associação pt 02 - Associação unidirecional um para muitos [^02]
 
 [^02]: Acesse o vídeo
@@ -149,7 +151,9 @@ Vamos explorar esses tipos:
 
 Estas são generalizações e as implementações podem variar dependendo da linguagem de programação e do design específico
 do sistema.
+
 #
+
 **Associação Unidirecional Um-para-Muitos:**
 
 Na associação unidirecional um-para-muitos, uma classe (a classe "um") está associada a várias instâncias de outra
@@ -228,7 +232,9 @@ Neste exemplo:
 
 Lembre-se de que este é um exemplo simplificado, e na prática, você precisaria lidar com mais complexidades, como
 tratamento de exceções, persistência de dados, entre outros.
+
 #
+
 66 - Orientação Obejtos - Associação pt 03 - Associação unidirecional muitos para um [^03]
 
 [^03]: Acesse o vídeo
@@ -311,7 +317,9 @@ Neste exemplo:
 
 Assim como no exemplo anterior, esta é uma simplificação, e em situações mais complexas, outras considerações e práticas
 de programação seriam necessárias.
+
 #
+
 67 - Orientação Obejtos - Associação pt 04 - Associação bidirecional [^04]
 
 [^04]: Acesse o vídeo
@@ -407,3 +415,89 @@ Neste exemplo:
 
 Essa é uma forma de associação bidirecional, onde ambas as classes têm conhecimento uma da outra. Isso permite navegar
 facilmente de um objeto para outro em ambas as direções.
+
+#
+
+68 - Orientação Objetos - Leitura de dados pelo console[^04]
+
+[^05]: Acesse o vídeo
+YouTube -> [68 - Orientação Objetos - Leitura de dados pelo console](https://abre.ai/hk2K)
+
+A leitura de dados do teclado em Java pode ser realizada usando a classe `Scanner` ou a classe `BufferedReader`. Vou
+fornecer exemplos para ambas.
+
+### Usando `Scanner`:
+
+```java
+import java.util.Scanner;
+
+public class LeituraTeclado {
+    public static void main(String[] args) {
+        // Criar um objeto Scanner
+        Scanner scanner = new Scanner(System.in);
+
+        // Leitura de uma linha como String
+        System.out.print("Digite uma linha: ");
+        String linha = scanner.nextLine();
+        System.out.println("Você digitou: " + linha);
+
+        // Leitura de um número inteiro
+        System.out.print("Digite um número inteiro: ");
+        int numeroInteiro = scanner.nextInt();
+        System.out.println("Você digitou: " + numeroInteiro);
+
+        // Leitura de um número decimal
+        System.out.print("Digite um número decimal: ");
+        double numeroDecimal = scanner.nextDouble();
+        System.out.println("Você digitou: " + numeroDecimal);
+
+        // Fechar o scanner
+        scanner.close();
+    }
+}
+```
+
+### Usando `BufferedReader`:
+
+```java
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+
+public class LeituraTeclado {
+    public static void main(String[] args) {
+        // Criar um objeto BufferedReader
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        // Leitura de uma linha como String
+        try {
+            System.out.print("Digite uma linha: ");
+            String linha = br.readLine();
+            System.out.println("Você digitou: " + linha);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Leitura de um número inteiro
+        try {
+            System.out.print("Digite um número inteiro: ");
+            int numeroInteiro = Integer.parseInt(br.readLine());
+            System.out.println("Você digitou: " + numeroInteiro);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Leitura de um número decimal
+        try {
+            System.out.print("Digite um número decimal: ");
+            double numeroDecimal = Double.parseDouble(br.readLine());
+            System.out.println("Você digitou: " + numeroDecimal);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+Ambos os exemplos fazem a leitura de dados do teclado, seja uma linha inteira como uma string, um número inteiro ou um
+número decimal. Lembre-se de lidar com exceções, especialmente ao usar `BufferedReader`.
