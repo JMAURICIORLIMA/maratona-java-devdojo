@@ -1,6 +1,6 @@
 # Orientação Objetos - Associação
 
-64 - Orientação Obejtos - Associação pt 01 - Arrays com Objetos [^01]
+## 64 - Orientação Obejtos - Associação pt 01 - Arrays com Objetos [^01]
 
 [^01]: Acesse o vídeo YouTube -> [64 - Orientação Obejtos - Associação pt 01 - Arrays com Objetos](https://abre.ai/hkAa)
 
@@ -76,7 +76,7 @@ necessidades do programa.
 
 #
 
-65 - Orientação Obejtos - Associação pt 02 - Associação unidirecional um para muitos [^02]
+## 65 - Orientação Obejtos - Associação pt 02 - Associação unidirecional um para muitos [^02]
 
 [^02]: Acesse o vídeo
 YouTube -> [65 - Orientação Obejtos - Associação pt 02 - Associação unidirecional um para muitos](https://abre.ai/hkA0)
@@ -235,7 +235,7 @@ tratamento de exceções, persistência de dados, entre outros.
 
 #
 
-66 - Orientação Obejtos - Associação pt 03 - Associação unidirecional muitos para um [^03]
+## 66 - Orientação Obejtos - Associação pt 03 - Associação unidirecional muitos para um [^03]
 
 [^03]: Acesse o vídeo
 YouTube -> [66 - Orientação Obejtos - Associação pt 03 - Associação unidirecional muitos para um](https://abre.ai/hkB2)
@@ -320,7 +320,7 @@ de programação seriam necessárias.
 
 #
 
-67 - Orientação Obejtos - Associação pt 04 - Associação bidirecional [^04]
+## 67 - Orientação Obejtos - Associação pt 04 - Associação bidirecional [^04]
 
 [^04]: Acesse o vídeo
 YouTube -> [67 - Orientação Obejtos - Associação pt 04 - Associação bidirecional](https://abre.ai/hkEh)
@@ -418,7 +418,7 @@ facilmente de um objeto para outro em ambas as direções.
 
 #
 
-68 - Orientação Objetos - Leitura de dados pelo console[^04]
+## 68 - Orientação Objetos - Leitura de dados pelo console[^04]
 
 [^05]: Acesse o vídeo
 YouTube -> [68 - Orientação Objetos - Leitura de dados pelo console](https://abre.ai/hk2K)
