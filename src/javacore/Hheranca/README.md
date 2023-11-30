@@ -484,7 +484,7 @@ No exemplo acima:
 A herança com membros protegidos é frequentemente usada para permitir que subclasses acessem ou modifiquem certos
 aspectos do comportamento da superclasse, mantendo outros membros encapsulados.
 
-# Herança Construtores
+# Herança - Construtores
 
 74 - Orientação Obejtos - Herança pt 04 - Construtores[^05]
 
@@ -546,3 +546,65 @@ Neste exemplo:
 Ao criar uma instância de `Cachorro`, o construtor de `Animal` é chamado primeiro (graças ao `super(nome)`), seguido
 pelo construtor de `Cachorro`. Isso garante que a inicialização da parte relacionada ao `Animal` seja tratada antes de
 qualquer coisa específica do `Cachorro`.
+
+# Herança - Sequência de inicialização
+
+75 - Orientação Obejtos - Herança pt 05 - Sequência de inicialização[^06]
+
+[^06]: Acesse o vídeo
+YouTube -> [75 - Orientação Obejtos - Herança pt 05 - Sequência de inicialização](https://abre.ai/htPc)
+
+Em Java, durante a criação de um objeto que envolve herança, há uma sequência específica de inicialização que ocorre.
+Essa sequência ajuda a garantir que tudo seja configurado corretamente. Aqui está a ordem geral de inicialização:
+
+1. **Inicialização de campos da superclasse:**
+    - Todos os campos da superclasse são inicializados, seja por valores padrão ou pelos valores fornecidos pelos
+      construtores.
+
+2. **Chamada do construtor da superclasse:**
+    - O construtor da superclasse é chamado. Isso ocorre antes do corpo do construtor da subclasse ser executado.
+
+3. **Inicialização de campos da subclasse:**
+    - Agora, os campos da subclasse são inicializados, seja por valores padrão ou pelos valores fornecidos pelos
+      construtores.
+
+4. **Chamada do construtor da subclasse:**
+    - O construtor da subclasse é chamado.
+
+Durante essas etapas, é importante observar que, se o construtor da subclasse não chama explicitamente o construtor da
+superclasse usando `super()`, será chamado automaticamente o construtor padrão da superclasse. Se o construtor da
+superclasse exige argumentos, é necessário chamar explicitamente o construtor correspondente da superclasse.
+
+**Exemplo:**
+
+```java
+class Animal {
+    private String nome;
+
+    // Construtor da superclasse
+    public Animal(String nome) {
+        this.nome = nome;
+        System.out.println("Construindo um animal com nome " + nome);
+    }
+}
+
+class Cachorro extends Animal {
+    private String raca;
+
+    // Construtor da subclasse
+    public Cachorro(String nome, String raca) {
+        super(nome); // Chama o construtor da superclasse
+        this.raca = raca;
+        System.out.println("Construindo um cachorro da raça " + raca);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Cachorro meuCachorro = new Cachorro("Buddy", "Labrador");
+    }
+}
+```
+
+Neste exemplo, ao criar um `Cachorro`, primeiro o construtor da superclasse `Animal` é chamado, e depois o construtor da
+subclasse `Cachorro`. Isso segue a sequência padrão de inicialização durante a herança em Java.
