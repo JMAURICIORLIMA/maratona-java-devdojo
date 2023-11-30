@@ -420,3 +420,66 @@ um método.
 
 A sobrescrita é fundamental para o polimorfismo, pois permite que objetos de diferentes classes sejam tratados de
 maneira uniforme quando eles estão na hierarquia de classes.
+
+#
+
+73 - Orientação Obejtos - Herança pt 03 - Protected[^04]
+
+[^04]: Acesse o vídeo YouTube -> [73 - Orientação Obejtos - Herança pt 03 - Protected]()
+
+Em Java, o modificador `protected` é um modificador de acesso que oferece visibilidade a membros (métodos, campos)
+dentro da mesma classe, pacote e também por subclasses (mesmo que estejam em pacotes diferentes).
+
+**Características do modificador `protected`:**
+
+1. **Acesso na mesma classe:** Os membros protegidos podem ser acessados dentro da própria classe onde foram declarados.
+
+2. **Acesso no mesmo pacote:** Os membros protegidos também podem ser acessados por classes que estão no mesmo pacote.
+
+3. **Acesso por subclasses:** Membros protegidos podem ser acessados por subclasses, independentemente do pacote ao qual
+   as subclasses pertencem.
+
+Aqui está um exemplo simples para ilustrar:
+
+```java
+// Classe no mesmo pacote que contém membros protegidos
+class Animal {
+    // Membro protegido
+    protected void comer() {
+        System.out.println("Animal comendo");
+    }
+}
+
+// Subclasse que estende Animal
+class Cachorro extends Animal {
+    void comerComRacao() {
+        // Pode acessar o método protegido da superclasse
+        comer();
+        System.out.println("Cachorro comendo ração");
+    }
+}
+
+// Outra classe no mesmo pacote
+class TesteProtegido {
+    public static void main(String[] args) {
+        Animal animal = new Animal();
+        // Mesmo pacote, pode acessar o método protegido
+        animal.comer();
+
+        Cachorro cachorro = new Cachorro();
+        // Mesmo pacote, pode acessar o método protegido
+        cachorro.comer();
+        // Pode chamar o novo método definido na subclasse
+        cachorro.comerComRacao();
+    }
+}
+```
+
+No exemplo acima:
+
+- `comer()` é um método protegido em `Animal`.
+- `Cachorro`, que estende `Animal`, pode acessar esse método protegido diretamente.
+- `TesteProtegido`, que está no mesmo pacote, também pode acessar o método protegido diretamente.
+
+A herança com membros protegidos é frequentemente usada para permitir que subclasses acessem ou modifiquem certos
+aspectos do comportamento da superclasse, mantendo outros membros encapsulados.
