@@ -357,7 +357,7 @@ Neste artigo, cobrimos um aspecto central da linguagem Java – herança.
 Vimos como Java suporta herança única com classes e herança múltipla com interfaces e discutimos as complexidades de
 como o mecanismo funciona na linguagem.
 
-# Super
+# Herança - Super
 
 72 - Orientação Obejtos - Herança pt 02 - Super[^03]
 
@@ -421,7 +421,7 @@ um método.
 A sobrescrita é fundamental para o polimorfismo, pois permite que objetos de diferentes classes sejam tratados de
 maneira uniforme quando eles estão na hierarquia de classes.
 
-#
+# Herança - Protected
 
 73 - Orientação Obejtos - Herança pt 03 - Protected[^04]
 
@@ -483,3 +483,66 @@ No exemplo acima:
 
 A herança com membros protegidos é frequentemente usada para permitir que subclasses acessem ou modifiquem certos
 aspectos do comportamento da superclasse, mantendo outros membros encapsulados.
+
+# Herança Construtores
+
+74 - Orientação Obejtos - Herança pt 04 - Construtores[^05]
+
+[^05]: Acesse o vídeo YouTube -> [74 - Orientação Obejtos - Herança pt 04 - Construtores](https://abre.ai/htNg)
+
+Na herança em Java, quando você cria uma subclasse (filha) que estende uma superclasse (pai), pode ser necessário chamar
+o construtor da superclasse a partir do construtor da subclasse. Isso é feito usando a palavra-chave `super`.
+
+**Sintaxe para chamar o construtor da superclasse:**
+
+```java
+super(); // Chama o construtor padrão da superclasse
+        super(argumentos); // Chama um construtor específico da superclasse com argumentos
+```
+
+A chamada para `super()` ou `super(argumentos)` deve ser a primeira instrução no construtor da subclasse. Isso ocorre
+porque o construtor da superclasse é chamado antes do código da subclasse ser executado.
+
+**Exemplo:**
+
+Considere uma classe de Animal com um construtor que inicializa o nome do animal. A classe `Cachorro` estende `Animal` e
+tem seu próprio construtor que também inicializa uma variável específica da classe `Cachorro`. Aqui está um exemplo:
+
+```java
+class Animal {
+    private String nome;
+
+    // Construtor da superclasse
+    public Animal(String nome) {
+        this.nome = nome;
+        System.out.println("Construindo um animal com nome " + nome);
+    }
+}
+
+class Cachorro extends Animal {
+    private String raca;
+
+    // Construtor da subclasse
+    public Cachorro(String nome, String raca) {
+        super(nome); // Chama o construtor da superclasse
+        this.raca = raca;
+        System.out.println("Construindo um cachorro da raça " + raca);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Cachorro meuCachorro = new Cachorro("Buddy", "Labrador");
+    }
+}
+```
+
+Neste exemplo:
+
+- `Animal` tem um construtor que inicializa o nome.
+- `Cachorro` estende `Animal` e tem seu próprio construtor que inicializa a raça, mas antes disso, chama o construtor da
+  superclasse para inicializar o nome.
+
+Ao criar uma instância de `Cachorro`, o construtor de `Animal` é chamado primeiro (graças ao `super(nome)`), seguido
+pelo construtor de `Cachorro`. Isso garante que a inicialização da parte relacionada ao `Animal` seja tratada antes de
+qualquer coisa específica do `Cachorro`.
