@@ -356,3 +356,67 @@ Neste artigo, cobrimos um aspecto central da linguagem Java – herança.
 
 Vimos como Java suporta herança única com classes e herança múltipla com interfaces e discutimos as complexidades de
 como o mecanismo funciona na linguagem.
+
+# Super
+
+72 - Orientação Obejtos - Herança pt 02 - Super[^03]
+
+[^03]: Acesse o vídeo YouTube -> [72 - Orientação Obejtos - Herança pt 02 - Super](https://abre.ai/htLY)
+
+A sobrescrita é um conceito importante na programação orientada a objetos que ocorre quando uma subclasse fornece uma
+implementação específica para um método que já está sendo fornecido por sua superclasse. A ideia é substituir a
+implementação na superclasse por uma implementação específica na subclasse.
+
+Em Java, a sobrescrita é feita quando:
+
+1. **Você tem uma classe pai (superclasse) e uma classe filha (subclasse).**
+2. **Ambas as classes têm um método com a mesma assinatura (mesmo nome, mesmo tipo de retorno e mesmos parâmetros).**
+
+Aqui está um exemplo simples:
+
+```java
+class Animal {
+    void fazerSom() {
+        System.out.println("Som genérico de animal");
+    }
+}
+
+class Cachorro extends Animal {
+    // Sobrescrevendo o método fazerSom da superclasse Animal
+    void fazerSom() {
+        System.out.println("Latido de cachorro");
+    }
+}
+```
+
+No exemplo acima, a classe `Cachorro` herda da classe `Animal` e sobrescreve o método `fazerSom`. Quando você
+chama `fazerSom` para uma instância de `Cachorro`, a versão do método na classe `Cachorro` é chamada em vez da versão na
+classe `Animal`.
+
+Principais pontos a serem observados:
+
+- A assinatura do método na subclasse deve ser idêntica à assinatura do método na superclasse.
+- O modificador de acesso na subclasse não pode ser mais restritivo do que o modificador de acesso na superclasse. Por
+  exemplo, se o método é público na superclasse, ele não pode ser privado na subclasse.
+
+```java
+// Exemplo de sobrescrita válida
+class Animal {
+    public void fazerSom() {
+        System.out.println("Som genérico de animal");
+    }
+}
+
+class Cachorro extends Animal {
+    @Override
+    public void fazerSom() {
+        System.out.println("Latido de cachorro");
+    }
+}
+```
+
+A anotação `@Override` é opcional, mas é uma boa prática usá-la para indicar explicitamente que você está sobrescrevendo
+um método.
+
+A sobrescrita é fundamental para o polimorfismo, pois permite que objetos de diferentes classes sejam tratados de
+maneira uniforme quando eles estão na hierarquia de classes.
