@@ -1,9 +1,9 @@
 package javacore.Gassociacao.exerciciofixacao.exercitando.test;
 
-import javacore.Gassociacao.exerciciofixacao.dominio.Aluno;
-import javacore.Gassociacao.exerciciofixacao.dominio.Local;
-import javacore.Gassociacao.exerciciofixacao.dominio.Professor;
-import javacore.Gassociacao.exerciciofixacao.dominio.Seminario;
+import javacore.Gassociacao.exerciciofixacao.exercitando.dominio.Aluno;
+import javacore.Gassociacao.exerciciofixacao.exercitando.dominio.Local;
+import javacore.Gassociacao.exerciciofixacao.exercitando.dominio.Professor;
+import javacore.Gassociacao.exerciciofixacao.exercitando.dominio.Seminario;
 
 public class AssociacaoTest {
 
@@ -32,8 +32,7 @@ public class AssociacaoTest {
         System.out.println(seminario1.getEndereco());
         System.out.println(seminario1.getLocalidade().getEndereco());
         System.out.println(professor01.getEspecialidade());
-        System.out.println("Aluno: " + aluno01.getNome() + ", está cadastrado no seminário de: "
-                + aluno01.getSeminario().getTitulo());
+        System.out.println("Aluno: " + aluno01.getNome() + ", está cadastrado no seminário de: " + aluno01.getSeminario().getTitulo());
 
         seminario1.consultaSeminario(aluno01, seminario1);
 
