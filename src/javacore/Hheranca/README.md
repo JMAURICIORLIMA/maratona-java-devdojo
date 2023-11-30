@@ -425,7 +425,7 @@ maneira uniforme quando eles estão na hierarquia de classes.
 
 73 - Orientação Obejtos - Herança pt 03 - Protected[^04]
 
-[^04]: Acesse o vídeo YouTube -> [73 - Orientação Obejtos - Herança pt 03 - Protected]()
+[^04]: Acesse o vídeo YouTube -> [73 - Orientação Obejtos - Herança pt 03 - Protected](https://abre.ai/htMP)
 
 Em Java, o modificador `protected` é um modificador de acesso que oferece visibilidade a membros (métodos, campos)
 dentro da mesma classe, pacote e também por subclasses (mesmo que estejam em pacotes diferentes).
