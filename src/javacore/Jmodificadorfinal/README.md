@@ -272,3 +272,8 @@ Lembre-se que o Singleton pode ser criticado por alguns, pois pode introduzir ac
 do código, tornando o código menos testável e mais difícil de entender. Portanto, é sempre uma boa prática considerar
 cuidadosamente se o uso do Singleton é realmente necessário em um determinado cenário. Em alguns casos, injeção de
 dependência pode ser uma alternativa mais flexível.
+
+79 - Orientação Objetos - Modificador final pt 03 - Classes e métodos [^04]
+
+[^04]: Acesse o vídeo
+Youtube -> [79 - Orientação Objetos - Modificador final pt 03 - Classes e métodos](https://abre.ai/huKY)
