@@ -1,6 +1,6 @@
-package javacore.Jmodificadorfinal.test;
+package javacore.Jmodificadorfinal.aula01.test;
 
-import javacore.Jmodificadorfinal.dominio.Carro;
+import javacore.Jmodificadorfinal.aula02.dominio.Carro;
 
 public class CarroTest01 {
 

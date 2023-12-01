@@ -9,11 +9,6 @@ Palavra-chave "final" - Baeldung [^01]
 [^02]: Acesse o vídeo
 YouTube -> [77 - Orientação Obejtos - Modificador final pt 01 - Tipos primitivos](https://abre.ai/huJS)
 
-78 - Orientação Objetos - Modificador final pt 02 - Tipos referência [^03]
-
-[^03]: Acesse o vídeo
-Youtube -> [78 - Orientação Objetos - Modificador final pt 02 - Tipos referência](https://abre.ai/huJZ)
-
 ## 1. Visão Geral
 
 Embora a herança nos permita reutilizar o código existente, às vezes precisamos **definir limitações à extensibilidade**
@@ -227,3 +222,53 @@ A atribuição acima causa o erro do compilador:
 
 Neste artigo, aprendemos o que a _palavra-chave final_ significa para classes, métodos e variáveis. Embora não possamos
 usar a _palavra-chave final_ com frequência em nosso código interno, ela pode ser uma boa solução de design.
+
+# Padrão de Design Singleton
+
+78 - Orientação Objetos - Modificador final pt 02 - Tipos referência [^03]
+
+[^03]: Acesse o vídeo
+Youtube -> [78 - Orientação Objetos - Modificador final pt 02 - Tipos referência](https://abre.ai/huJZ)
+
+O Singleton é um padrão de design que garante que uma classe tenha apenas uma instância e fornece um ponto de acesso
+global para essa instância. Isso é útil quando exatamente uma instância de uma classe é necessária para coordenar ações
+em todo o sistema.
+
+A implementação típica do Singleton envolve:
+
+1. **Um construtor privado:** Para garantir que a classe não possa ser instanciada diretamente fora da classe.
+
+2. **Um método estático privado para recuperar a instância única:** Este método cria a instância se ela ainda não
+   existir e retorna a instância existente se já estiver criada.
+
+Aqui está um exemplo em Java:
+
+```java
+public class Singleton {
+    // 1. Variável estática única que armazena a instância
+    private static Singleton instance;
+
+    // 2. Construtor privado
+    private Singleton() {
+        // Construtor privado para evitar a instanciação direta
+    }
+
+    // 3. Método estático para recuperar a instância única
+    public static Singleton getInstance() {
+        // Cria uma instância se ainda não existir
+        if (instance == null) {
+            instance = new Singleton();
+        }
+        return instance;
+    }
+}
+```
+
+Agora, quando você chama `Singleton.getInstance()`, você sempre obtém a mesma instância de `Singleton`. Isso é útil em
+situações onde você quer evitar a criação de múltiplas instâncias da classe e ter um ponto centralizado de acesso a essa
+instância.
+
+Lembre-se que o Singleton pode ser criticado por alguns, pois pode introduzir acoplamento forte entre diferentes partes
+do código, tornando o código menos testável e mais difícil de entender. Portanto, é sempre uma boa prática considerar
+cuidadosamente se o uso do Singleton é realmente necessário em um determinado cenário. Em alguns casos, injeção de
+dependência pode ser uma alternativa mais flexível.
