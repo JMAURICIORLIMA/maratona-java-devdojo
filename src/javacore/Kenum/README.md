@@ -588,3 +588,77 @@ public class ExemploEnum {
 ```
 
 Esse exemplo ilustra como criar, acessar e iterar sobre as constantes de uma enumeração em Java.
+
+# Enumeração - Sobrescrita de métodos
+
+## 82 - Orientação Objetos - Enumeração pt 03 - Sobrescrita de métodos [^04]
+
+[^04]: Assita o vídeo no
+Youtube -> [82 - Orientação Objetos - Enumeração pt 03 - Sobrescrita de métodos](https://abre.ai/hx8Q)
+
+Quando você está trabalhando com enumerações em Java, você pode querer sobrescrever métodos padrão ou criar métodos
+personalizados para atender às necessidades específicas da sua enumeração. A sobrescrita de métodos em uma enumeração
+funciona da mesma forma que em outras classes.
+
+Aqui está um exemplo de como você pode sobrescrever o método `toString()` em uma enumeração:
+
+```java
+public enum DiaDaSemana {
+    SEGUNDA("Segunda-feira"),
+    TERCA("Terça-feira"),
+    QUARTA("Quarta-feira"),
+    QUINTA("Quinta-feira"),
+    SEXTA("Sexta-feira"),
+    SABADO("Sábado"),
+    DOMINGO("Domingo");
+
+    private String nome;
+
+    private DiaDaSemana(String nome) {
+        this.nome = nome;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    // Sobrescrita do método toString
+    @Override
+    public String toString() {
+        return getNome();
+    }
+}
+```
+
+Aqui, ao sobrescrever o método `toString()`, estamos definindo que, ao chamar `toString()` em uma instância
+de `DiaDaSemana`, ele retornará o nome do dia.
+
+Você também pode adicionar métodos personalizados conforme necessário para sua enumeração. Vamos adicionar um método que
+verifica se um dia é considerado um dia útil:
+
+```java
+public enum DiaDaSemana {
+    // ...
+
+    // Método personalizado
+    public boolean eDiaUtil() {
+        return this != SABADO && this != DOMINGO;
+    }
+}
+```
+
+Agora você pode usar este método personalizado ao trabalhar com instâncias da enumeração:
+
+```java
+public class ExemploEnum {
+    public static void main(String[] args) {
+        DiaDaSemana dia = DiaDaSemana.SEGUNDA;
+
+        System.out.println("Hoje é " + dia); // Chama implicitamente o toString()
+        System.out.println("É dia útil? " + dia.eDiaUtil()); // Usa o método personalizado
+    }
+}
+```
+
+Este é apenas um exemplo básico, mas você pode personalizar suas enumerações com métodos adicionais e sobrescrita de
+métodos conforme necessário para atender aos requisitos específicos do seu projeto.
