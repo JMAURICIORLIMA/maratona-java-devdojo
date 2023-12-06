@@ -517,3 +517,74 @@ consultar [Jackson – Serialize Enums as JSON Objects](https://www.baeldung.com
 
 Neste artigo, exploramos o enum Java, desde o básico da linguagem até casos de uso mais avançados e interessantes do
 mundo real.
+
+# Enumeração - Construtores e atributos
+
+## 81 - Orientação Objetos - Enumeração pt 02 - Construtores e atributos [^03]
+
+[^03]: Assita o vídeo no
+Youtube -> [81 - Orientação Objetos - Enumeração pt 02 - Construtores e atributos](https://abre.ai/hx8n)
+
+Em Java, uma enumeração (enum) é um tipo de dado que consiste em um conjunto fixo de constantes (valores). Enumerações
+são utilizadas para representar conjuntos de valores fixos, como dias da semana, meses, etc.
+
+Cada constante dentro de uma enumeração é tratada como uma instância dessa enumeração. As enumerações em Java podem ter
+construtores, métodos e campos, semelhantes a classes normais.
+
+Aqui está um exemplo de uma enumeração que representa os dias da semana:
+
+```java
+public enum DiaDaSemana {
+    // As constantes e seus respectivos construtores
+    SEGUNDA("Segunda-feira"),
+    TERCA("Terça-feira"),
+    QUARTA("Quarta-feira"),
+    QUINTA("Quinta-feira"),
+    SEXTA("Sexta-feira"),
+    SABADO("Sábado"),
+    DOMINGO("Domingo");
+
+    // Um campo para armazenar o nome do dia
+    private String nome;
+
+    // Um construtor privado para inicializar o campo
+    private DiaDaSemana(String nome) {
+        this.nome = nome;
+    }
+
+    // Um método para obter o nome do dia
+    public String getNome() {
+        return nome;
+    }
+}
+```
+
+Aqui estão alguns pontos importantes:
+
+1. **Constantes com construtores:** Cada constante (`SEGUNDA`, `TERCA`, etc.) tem um construtor privado que é chamado
+   quando a constante é inicializada.
+
+2. **Campos e métodos:** Cada constante pode ter campos e métodos. No exemplo, cada constante tem um campo `nome` e um
+   método `getNome()`.
+
+3. **Inicialização de campos:** Os campos de uma enumeração são inicializados quando as constantes são criadas. No
+   exemplo, cada constante tem um campo `nome` que é inicializado quando a constante é criada.
+
+Agora, você pode usar essa enumeração em seu código da seguinte forma:
+
+```java
+public class ExemploEnum {
+    public static void main(String[] args) {
+        // Acesso às constantes
+        DiaDaSemana dia = DiaDaSemana.SEGUNDA;
+        System.out.println("Hoje é " + dia.getNome());
+
+        // Iteração sobre todas as constantes
+        for (DiaDaSemana d : DiaDaSemana.values()) {
+            System.out.println(d.getNome());
+        }
+    }
+}
+```
+
+Esse exemplo ilustra como criar, acessar e iterar sobre as constantes de uma enumeração em Java.
