@@ -662,3 +662,68 @@ public class ExemploEnum {
 
 Este é apenas um exemplo básico, mas você pode personalizar suas enumerações com métodos adicionais e sobrescrita de
 métodos conforme necessário para atender aos requisitos específicos do seu projeto.
+
+# Enumeração - Busca por Atributos
+
+## 83 - Orientação Objetos - Enumeração pt 04 - Busca por atributos [^05]
+
+[^05]: Assita o vídeo no
+Youtube -> [83 - Orientação Objetos - Enumeração pt 04 - Busca por atributos](https://abre.ai/hx9m)
+
+
+Se você deseja buscar uma enumeração com base em um atributo específico, pode criar um método estático na enumeração
+para realizar essa busca. Aqui está um exemplo usando a enumeração `DiaDaSemana` e um método para encontrar um dia com
+base no nome:
+
+```java
+public enum DiaDaSemana {
+    SEGUNDA("Segunda-feira"),
+    TERCA("Terça-feira"),
+    QUARTA("Quarta-feira"),
+    QUINTA("Quinta-feira"),
+    SEXTA("Sexta-feira"),
+    SABADO("Sábado"),
+    DOMINGO("Domingo");
+
+    private String nome;
+
+    private DiaDaSemana(String nome) {
+        this.nome = nome;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    // Sobrescrita do método toString
+    @Override
+    public String toString() {
+        return getNome();
+    }
+
+    // Método para buscar um dia pelo nome
+    public static DiaDaSemana buscarPorNome(String nome) {
+        for (DiaDaSemana dia : values()) {
+            if (dia.getNome().equalsIgnoreCase(nome)) {
+                return dia;
+            }
+        }
+        throw new IllegalArgumentException("Dia não encontrado para o nome: " + nome);
+    }
+}
+```
+
+Agora, você pode usar o método `buscarPorNome` para obter uma instância de `DiaDaSemana` com base no nome:
+
+```java
+public class ExemploEnum {
+    public static void main(String[] args) {
+        DiaDaSemana dia = DiaDaSemana.buscarPorNome("Sexta-feira");
+        System.out.println("Encontrado: " + dia);
+    }
+}
+```
+
+Este é apenas um exemplo simples, mas você pode adaptar o método de busca conforme necessário para atender aos
+requisitos específicos do seu projeto. Este método é sensível a maiúsculas e minúsculas, mas você pode ajustá-lo
+conforme necessário.
