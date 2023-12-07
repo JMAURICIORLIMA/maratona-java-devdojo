@@ -89,20 +89,20 @@ que é comum na leitura de arquivos:
 public abstract class BaseFileReader {
 
     protected Path filePath;
-    
+
     protected BaseFileReader(Path filePath) {
         this.filePath = filePath;
     }
-    
+
     public Path getFilePath() {
         return filePath;
     }
-    
+
     public List<String> readFile() throws IOException {
         return Files.lines(filePath)
-          .map(this::mapFileLine).collect(Collectors.toList());
+                .map(this::mapFileLine).collect(Collectors.toList());
     }
-    
+
     protected abstract String mapFileLine(String line);
 
 }
@@ -132,7 +132,7 @@ public class LowercaseFileReader extends BaseFileReader {
     @Override
     public String mapFileLine(String line) {
         return line.toLowerCase();
-    }   
+    }
 
 }
 ```
@@ -162,11 +162,12 @@ especificar outros aspectos de leitura de arquivo.
 Finalmente, usar uma classe que herda de uma classe abstrata não é diferente de qualquer outra classe concreta:
 
 ```java
+
 @Test
 public void givenLowercaseFileReaderInstance_whenCalledreadFile_thenCorrect() throws Exception {
-URL location = getClass().getClassLoader().getResource("files/test.txt")
-Path path = Paths.get(location.toURI());
-BaseFileReader lowercaseFileReader = new LowercaseFileReader(path);
+    URL location = getClass().getClassLoader().getResource("files/test.txt")
+    Path path = Paths.get(location.toURI());
+    BaseFileReader lowercaseFileReader = new LowercaseFileReader(path);
 
     assertThat(lowercaseFileReader.readFile()).isInstanceOf(List.class);
 
@@ -181,3 +182,93 @@ tutorial sobre carregadores de classes em Java](https://www.baeldung.com/java-cl
 
 Neste artigo rápido, **aprendemos os fundamentos das classes abstratas em Java e quando usá-las para obter abstração e
 encapsular implementações comuns em um único lugar**.
+
+# **Métodos Abstratos em Classes Abstratas - Detalhes Adicionais**
+
+## 85 - Orientação Objetos - Classes abstratas pt 02 - Métodos abstratos [^03]
+
+[^03]: Assita o vídeo no
+Youtube -> [85 - Orientação Objetos - Classes abstratas pt 02 - Métodos abstratos](https://abre.ai/hzlo)
+
+Vamos aprofundar um pouco mais nos métodos abstratos dentro de classes abstratas:
+
+1. **Implementação nas Subclasses:**
+
+- Um método abstrato em uma classe abstrata não tem implementação na própria classe. A implementação é fornecida por
+  subclasses concretas.
+
+  ```java
+  public abstract class Animal {
+      public abstract void fazerSom();
+  }
+
+  public class Cachorro extends Animal {
+      @Override
+      public void fazerSom() {
+          System.out.println("Latindo...");
+      }
+  }
+  ```
+
+2. **Modificadores de Acesso:**
+
+- Métodos abstratos em uma classe abstrata podem ter modificadores de acesso, como `public`, `protected`, ou `default`.
+
+  ```java
+  public abstract class Animal {
+      protected abstract void mover();
+  }
+  ```
+
+3. **Assinatura do Método:**
+
+- As subclasses devem fornecer uma implementação que tenha a mesma assinatura (nome, tipo de retorno, e tipos de
+  parâmetros) do método abstrato na classe pai.
+
+  ```java
+  public abstract class Animal {
+      public abstract void fazerSom();
+  }
+
+  public class Gato extends Animal {
+      @Override
+      public void fazerSom() {
+          System.out.println("Miando...");
+      }
+  }
+  ```
+
+4. **Métodos Concretos Junto com Métodos Abstratos:**
+
+- Uma classe abstrata pode ter métodos concretos (com implementação) além de métodos abstratos. Isso permite fornecer
+  alguma funcionalidade padrão nas classes que herdam.
+
+  ```java
+  public abstract class Animal {
+      public void mover() {
+          System.out.println("Movendo-se...");
+      }
+
+      public abstract void fazerSom();
+  }
+  ```
+
+5. **Chamada de Métodos Abstratos:**
+
+- Métodos abstratos podem ser chamados em outras partes do código da classe abstrata, mesmo que não tenham uma
+  implementação real na classe. A implementação será fornecida pelas subclasses.
+
+  ```java
+  public abstract class Animal {
+      public void executarAcao() {
+          fazerSom();
+          mover();
+      }
+
+      public abstract void fazerSom();
+      protected abstract void mover();
+  }
+  ```
+
+Lembre-se de que a ideia principal de métodos abstratos em classes abstratas é fornecer uma estrutura para subclasses
+implementarem. Esses métodos são como contratos que as subclasses devem cumprir.
