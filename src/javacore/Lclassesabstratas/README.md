@@ -185,9 +185,9 @@ encapsular implementações comuns em um único lugar**.
 
 # **Métodos Abstratos em Classes Abstratas - Detalhes Adicionais**
 
-## 85 - Orientação Objetos - Classes abstratas pt 02 - Métodos abstratos [^03]
+## 85 - Orientação Objetos - Classes abstratas pt 02 - Métodos abstratos [^04]
 
-[^03]: Assita o vídeo no
+[^04]: Assita o vídeo no
 Youtube -> [85 - Orientação Objetos - Classes abstratas pt 02 - Métodos abstratos](https://abre.ai/hzlo)
 
 Vamos aprofundar um pouco mais nos métodos abstratos dentro de classes abstratas:
