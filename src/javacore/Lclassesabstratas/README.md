@@ -272,3 +272,94 @@ Vamos aprofundar um pouco mais nos métodos abstratos dentro de classes abstrata
 
 Lembre-se de que a ideia principal de métodos abstratos em classes abstratas é fornecer uma estrutura para subclasses
 implementarem. Esses métodos são como contratos que as subclasses devem cumprir.
+
+# **Regras para Métodos Abstratos em Classes Abstratas**
+
+## 86 - Orientação Objetos - Classes abstratas pt 03 - Métodos abstratos regras [^05]
+
+[^05]: Assita o vídeo no
+Youtube -> [86 - Orientação Objetos - Classes abstratas pt 03 - Métodos abstratos regras](https://abre.ai/hzm2)
+
+Métodos abstratos em classes abstratas seguem algumas regras específicas:
+
+1. **Não Pode Ter Implementação:**
+
+- Um método abstrato não pode ter uma implementação na classe abstrata. Se tiver qualquer implementação, ele não pode
+  ser declarado como abstrato.
+
+  ```java
+  // Incorreto
+  public abstract class Exemplo {
+      public abstract void metodoAbstrato() {
+          // implementação...
+      }
+  }
+  ```
+
+2. **Deve Ser Implementado por Subclasses:**
+
+- Subclasses concretas (não abstratas) da classe abstrata devem fornecer uma implementação para todos os métodos
+  abstratos da classe pai.
+
+  ```java
+  public abstract class Animal {
+      public abstract void fazerSom();
+  }
+
+  public class Cachorro extends Animal {
+      @Override
+      public void fazerSom() {
+          System.out.println("Latindo...");
+      }
+  }
+  ```
+
+3. **Pode Ter Modificadores de Acesso:**
+
+- Métodos abstratos podem ter modificadores de acesso como `public`, `protected`, ou `default`. Não faz sentido
+  ser `private` porque, nesse caso, não poderia ser implementado pelas subclasses.
+
+  ```java
+  public abstract class Exemplo {
+      protected abstract void metodoAbstrato();
+  }
+  ```
+
+4. **Pode Ter Parâmetros e Tipo de Retorno:**
+
+- Assim como métodos normais, métodos abstratos podem ter parâmetros e um tipo de retorno.
+
+  ```java
+  public abstract class Exemplo {
+      public abstract int calcularAlgumaCoisa(int a, int b);
+  }
+  ```
+
+5. **Pode Ser Chamado por Outros Métodos da Classe:**
+
+- Mesmo não tendo uma implementação, um método abstrato pode ser chamado por outros métodos na mesma classe abstrata. A
+  implementação será fornecida pelas subclasses.
+
+  ```java
+  public abstract class Animal {
+      public void executarAcao() {
+          fazerSom();
+      }
+
+      public abstract void fazerSom();
+  }
+  ```
+
+6. **Deve Ser Marcado como "Abstract":**
+
+- Para indicar que um método é abstrato, você usa a palavra-chave `abstract`. Isso é necessário para a sintaxe correta e
+  para informar ao compilador que as subclasses devem fornecer uma implementação.
+
+  ```java
+  public abstract class Exemplo {
+      public abstract void metodoAbstrato();
+  }
+  ```
+
+Lembre-se, a ideia principal é que métodos abstratos em classes abstratas proporcionam uma estrutura ou contrato que as
+subclasses devem seguir.
