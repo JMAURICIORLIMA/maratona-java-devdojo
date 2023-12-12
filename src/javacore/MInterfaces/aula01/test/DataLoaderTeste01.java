@@ -1,7 +1,5 @@
 package javacore.MInterfaces.aula01.test;
 
-import javacore.MInterfaces.aula01.DatabaseLoader;
-import javacore.MInterfaces.aula01.FileLoader;
 import javacore.MInterfaces.aula01.domain.DatabaseLoader;
 import javacore.MInterfaces.aula01.domain.FileLoader;
 
