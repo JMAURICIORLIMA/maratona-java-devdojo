@@ -2,9 +2,9 @@
 
 [^01]: Acesse o site em inglês -> [Interfaces Java](https://www.baeldung.com/java-interfaces)
 
-## 88 - Orientação Objetos - Interfaces pt 01 - Introdução[^02]
+## 87 - Orientação Objetos - Interfaces pt 01 - Introdução[^02]
 
-[^02]: Assita o vídeo no Youtube -> [88 - Orientação Objetos - Interfaces pt 01 - Introdução](https://abre.ai/hCoV)
+[^02]: Assita o vídeo no Youtube -> [87 - Orientação Objetos - Interfaces pt 01 - Introdução](https://abre.ai/hCoV)
 
 ## 1. Visão Geral
 
@@ -131,11 +131,11 @@ herda os métodos fly e transform:
 
 ```java
 public interface Transform {
-void transform();
+    void transform();
 }
 
 public interface Fly {
-void fly();
+    void fly();
 }
 
 public class Car implements Fly, Transform {
@@ -166,10 +166,12 @@ Vamos começar definindo a interface Shape:
 
 ```java
 public interface Shape {
-String name();
+    String name();
 }
 
-Agora vamos criar também a Circle : classe
+Agora vamos
+criar também
+a Circle :classe
 
 public class Circle implements Shape {
 
@@ -202,12 +204,19 @@ List<Shape> shapes = new ArrayList<>();
 Shape circleShape = new Circle();
 Shape squareShape = new Square();
 
-shapes.add(circleShape);
-shapes.add(squareShape);
+shapes.
 
-for (Shape shape : shapes) {
-System.out.println(shape.name());
-}
+add(circleShape);
+shapes.
+
+add(squareShape);
+
+for(
+Shape shape :shapes){
+        System.out.
+
+println(shape.name());
+        }
 ```
 
 ## 4. Métodos padrão em interfaces
@@ -232,11 +241,11 @@ criando duas interfaces, HasColor e Shape:
 
 ```java
 public interface HasColor {
-String getColor();
+    String getColor();
 }
 
 public interface Box extends HasColor {
-int getHeight()
+    int getHeight()
 }
 ```
 
@@ -252,13 +261,15 @@ considerar a interface Transform e a classe abstrata Vehicle que a implementa:
 public interface Transform {
 
     void transform();
-    default void printSpecs(){
+
+    default void printSpecs() {
         System.out.println("Transform Specification");
     }
 
 }
 
-public abstract class Vehicle implements Transform {}
+public abstract class Vehicle implements Transform {
+}
 ```
 
 Neste exemplo, a classe Vehicle herda dois métodos: o método abstract transform e o método printSpecs padrão.
@@ -372,3 +383,105 @@ metodo1();
 Esses são os conceitos fundamentais das interfaces em Java. Elas são uma parte essencial da linguagem para alcançar a
 abstração e fornecer uma estrutura de herança eficiente e flexível.
 
+# Implementeção múltiplas interfaces
+
+## 88 - Orientação Objetos - Interfaces pt 02 - Implementando múltiplas interfaces [^03]
+
+[^03]: Assita o vídeo no
+Youtube -> [88 - Orientação Objetos - Interfaces pt 02 - Implementando múltiplas interfaces](https://abre.ai/hCqB)
+
+**Implementação de Múltiplas Interfaces em Java**
+
+Em Java, uma classe pode implementar várias interfaces, o que permite que ela herde comportamentos de diferentes fontes.
+Vamos explorar como isso é feito e entender alguns conceitos relacionados.
+
+### Sintaxe Básica:
+
+```java
+public class MinhaClasse implements Interface1, Interface2 {
+    // Implementação dos métodos das interfaces
+    // ...
+}
+```
+
+### Exemplo Prático:
+
+```java
+// Interface 1
+interface Animal {
+    void fazerSom();
+}
+
+// Interface 2
+interface Corredor {
+    void correr();
+}
+
+// Classe que implementa ambas as interfaces
+class Cachorro implements Animal, Corredor {
+    @Override
+    public void fazerSom() {
+        System.out.println("Latindo...");
+    }
+
+    @Override
+    public void correr() {
+        System.out.println("Correndo...");
+    }
+}
+
+public class Exemplo {
+    public static void main(String[] args) {
+        // Criando uma instância da classe que implementa ambas as interfaces
+        Cachorro meuCachorro = new Cachorro();
+
+        // Chamando métodos das interfaces
+        meuCachorro.fazerSom();
+        meuCachorro.correr();
+    }
+}
+```
+
+Neste exemplo, a classe `Cachorro` implementa tanto a interface `Animal` quanto a interface `Corredor`. Isso significa
+que ela precisa fornecer uma implementação para todos os métodos dessas interfaces.
+
+### Múltiplas Interfaces com Métodos Conflitantes:
+
+Se duas interfaces têm métodos com a mesma assinatura, a classe que as implementa deve fornecer uma implementação
+específica para resolver o conflito.
+
+```java
+interface InterfaceA {
+    void metodoComum();
+}
+
+interface InterfaceB {
+    void metodoComum();
+}
+
+class MinhaClasse implements InterfaceA, InterfaceB {
+    @Override
+    public void metodoComum() {
+        System.out.println("Implementação específica");
+    }
+}
+```
+
+### Vantagens de Múltiplas Interfaces:
+
+1. **Reutilização de Código:** Permite que uma classe reutilize funcionalidades de diferentes fontes.
+
+2. **Flexibilidade:** Permite que as classes sejam adaptáveis a diferentes contextos através da implementação de
+   interfaces específicas.
+
+3. **Design Modular:** Facilita o design modular ao dividir funcionalidades em interfaces independentes.
+
+### Cuidados ao Usar Múltiplas Interfaces:
+
+1. **Conflitos de Nomes de Métodos:** Certifique-se de resolver conflitos de nomes de métodos quando ocorrerem.
+
+2. **Coerência Lógica:** Certifique-se de que a classe que implementa várias interfaces faz sentido do ponto de vista
+   lógico.
+
+Ao entender e aplicar corretamente a implementação de múltiplas interfaces, você pode criar classes mais flexíveis e
+reutilizáveis em seus programas Java.
