@@ -485,3 +485,108 @@ class MinhaClasse implements InterfaceA, InterfaceB {
 
 Ao entender e aplicar corretamente a implementação de múltiplas interfaces, você pode criar classes mais flexíveis e
 reutilizáveis em seus programas Java.
+
+# **Interfaces com Atributos e Métodos Estáticos em Java**
+
+## 89 - Orientação Objetos - Interfaces pt 03 - Atributos e métodos estáticos [^04]
+
+[^04]: Assita o vídeo no
+Youtube -> [89 - Orientação Objetos - Interfaces pt 03 - Atributos e métodos estáticos](https://abre.ai/hCsm)
+
+Em Java, a partir da versão 8, interfaces podem ter métodos e atributos estáticos. Vamos entender como isso funciona.
+
+### Métodos Estáticos em Interfaces:
+
+```java
+interface MinhaInterface {
+    // Método estático
+    static void meuMetodoEstatico() {
+        System.out.println("Método estático na interface.");
+    }
+
+    // Outros métodos (pode haver métodos padrão também)
+    void meuMetodoNormal();
+}
+
+class MinhaClasse implements MinhaInterface {
+    @Override
+    public void meuMetodoNormal() {
+        System.out.println("Método normal implementado na classe.");
+    }
+}
+
+public class Exemplo {
+    public static void main(String[] args) {
+        // Chamando o método estático diretamente da interface
+        MinhaInterface.meuMetodoEstatico();
+
+        // Criando uma instância da classe
+        MinhaClasse minhaInstancia = new MinhaClasse();
+        minhaInstancia.meuMetodoNormal();
+    }
+}
+```
+
+Neste exemplo, a interface `MinhaInterface` possui um método estático `meuMetodoEstatico()`. Esse método pode ser
+chamado diretamente da interface sem a necessidade de uma instância da classe que a implementa.
+
+### Atributos Estáticos em Interfaces:
+
+```java
+interface OutraInterface {
+    // Atributo estático (constante)
+    int MIN_VALOR = 0;
+
+    // Método normal
+    void meuOutroMetodo();
+}
+
+class OutraClasse implements OutraInterface {
+    @Override
+    public void meuOutroMetodo() {
+        System.out.println("Método normal implementado na outra classe.");
+        System.out.println("Valor mínimo: " + MIN_VALOR); // Acessando o atributo estático
+    }
+}
+
+public class SegundoExemplo {
+    public static void main(String[] args) {
+        // Criando uma instância da classe
+        OutraClasse outraInstancia = new OutraClasse();
+        outraInstancia.meuOutroMetodo();
+    }
+}
+```
+
+Aqui, a interface `OutraInterface` possui um atributo estático `MIN_VALOR`. Esse atributo pode ser acessado diretamente
+da interface ou através da classe que a implementa.
+
+### Considerações:
+
+1. Métodos estáticos em interfaces são úteis para fornecer utilidades relacionadas à interface, que podem ser
+   compartilhadas por todas as classes que a implementam.
+
+2. Atributos estáticos em interfaces geralmente são usados para definir constantes que são relevantes para todas as
+   classes que implementam a interface.
+
+3. Métodos e atributos estáticos em interfaces são implicitamente públicos, estáticos e finais.
+
+4. A partir do Java 9, interfaces podem ter métodos privados e métodos privados estáticos. Isso é útil para compartilhar
+   código entre métodos padrão sem expor esses métodos ao mundo exterior.
+
+```java
+interface MinhaInterface {
+    // Método público
+    default void meuMetodoPublico() {
+        // Chama o método privado
+        meuMetodoPrivado();
+    }
+
+    // Método privado
+    private void meuMetodoPrivado() {
+        System.out.println("Método privado na interface.");
+    }
+}
+```
+
+Esse recurso ajuda a evitar a duplicação de código em métodos padrão dentro de uma interface.
