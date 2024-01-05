@@ -415,3 +415,90 @@ método `som` da classe `Cachorro` em tempo de execução.
 3. **Encapsulamento:** Ajuda a esconder a implementação específica e expõe apenas a interface comum.
 
 O polimorfismo é uma poderosa técnica que contribui para a construção de sistemas flexíveis e extensíveis em Java.
+
+# **Funcionamento do Polimorfismo em Java**
+
+## 91 - Orientação Objetos - Polimorfismo pt 02 - Funcionamento[^03]
+
+[^03]: Assita o vídeo no Youtube -> [91 - Orientação Objetos - Polimorfismo pt 02 - Funcionamento](https://abre.ai/hPqr)
+
+
+
+O polimorfismo em Java permite que objetos de diferentes classes sejam tratados como objetos de uma mesma classe por
+meio de uma referência de tipo comum. Ele é implementado por meio de dois conceitos principais: sobrescrita de métodos e
+referências de tipo.
+
+### 1. **Sobrescrita de Métodos:**
+
+A sobrescrita de métodos é a capacidade de uma classe fornecer uma implementação específica para um método que é já
+fornecido por uma de suas superclasses. Para isso, a classe derivada (subclasse) deve fornecer uma implementação
+específica para o método que está sendo sobrescrito.
+
+```java
+class Animal {
+    void fazerSom() {
+        System.out.println("Som genérico de um animal.");
+    }
+}
+
+class Cachorro extends Animal {
+    void fazerSom() {
+        System.out.println("Latido de cachorro.");
+    }
+}
+
+class Gato extends Animal {
+    void fazerSom() {
+        System.out.println("Miado de gato.");
+    }
+}
+
+public class ExemploPolimorfismo {
+    public static void main(String[] args) {
+        Animal meuAnimal1 = new Cachorro();
+        Animal meuAnimal2 = new Gato();
+
+        meuAnimal1.fazerSom(); // Latido de cachorro.
+        meuAnimal2.fazerSom(); // Miado de gato.
+    }
+}
+```
+
+No exemplo acima, os métodos `fazerSom()` nas classes `Cachorro` e `Gato` estão sobrescrevendo o método homônimo na
+classe `Animal`. Isso significa que, quando você chama `fazerSom()` usando uma referência de tipo `Animal`, o método
+específico da classe real (Cachorro ou Gato) é executado.
+
+### 2. **Referências de Tipo e Objetos Reais:**
+
+O polimorfismo em Java também é possível devido à relação entre referências de tipo e objetos reais em tempo de
+execução. Você pode ter uma referência de tipo de uma classe mais genérica apontando para um objeto de uma classe mais
+específica.
+
+```java
+Animal meuAnimal = new Cachorro();
+```
+
+Neste exemplo, `meuAnimal` é uma referência de tipo `Animal`, mas aponta para um objeto real da classe `Cachorro`. Isso
+significa que, em tempo de execução, os métodos chamados por meio de `meuAnimal` serão os métodos da classe `Cachorro`.
+
+### 3. **Vantagens do Polimorfismo:**
+
+- **Flexibilidade:** Permite que o mesmo código trabalhe com diferentes tipos de objetos.
+
+- **Extensibilidade:** Facilita a adição de novas classes sem modificar o código existente.
+
+- **Manutenção:** Facilita a manutenção do código, pois reduz a necessidade de alterações quando novas classes são
+  introduzidas.
+
+- **Encapsulamento:** Ajuda a esconder detalhes de implementação e expõe apenas a interface.
+
+### 4. **Resumo do Funcionamento:**
+
+1. **Decisão em Tempo de Execução:** O método específico a ser chamado é decidido em tempo de execução, com base no tipo
+   real do objeto ao qual a referência está apontando.
+
+2. **Vinculação Dinâmica:** A vinculação dinâmica é o mecanismo que permite que o método apropriado seja chamado durante
+   a execução.
+
+3. **Flexibilidade e Extensibilidade:** O polimorfismo fornece uma base sólida para criar sistemas flexíveis e
+   extensíveis em Java.

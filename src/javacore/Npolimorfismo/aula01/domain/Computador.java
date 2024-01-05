@@ -1,4 +1,4 @@
-package javacore.Npolimorfismo.domain;
+package javacore.Npolimorfismo.aula01.domain;
 
 public class Computador extends Produto {
 
@@ -9,7 +9,7 @@ public class Computador extends Produto {
 
     @Override
     public double calcularImposto() {
-        System.out.println("Calculando imposto do Computador");
+        System.out.println("Calculando imposto do Computador ");
         return this.valor * IMPOSTO_POR_CENTO;
     }
 }

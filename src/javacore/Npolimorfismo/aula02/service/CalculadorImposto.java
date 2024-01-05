@@ -1,7 +1,7 @@
-package javacore.Npolimorfismo.service;
+package javacore.Npolimorfismo.aula02.service;
 
-import javacore.Npolimorfismo.domain.Computador;
-import javacore.Npolimorfismo.domain.Tomate;
+import javacore.Npolimorfismo.aula02.domain.Computador;
+import javacore.Npolimorfismo.aula02.domain.Tomate;
 
 public class CalculadorImposto {
 

@@ -1,4 +1,4 @@
-package javacore.Npolimorfismo.domain;
+package javacore.Npolimorfismo.aula01.domain;
 
 public class Tomate extends Produto {
 

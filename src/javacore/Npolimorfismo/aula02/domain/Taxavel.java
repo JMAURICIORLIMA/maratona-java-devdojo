@@ -1,4 +1,4 @@
-package javacore.Npolimorfismo.domain;
+package javacore.Npolimorfismo.aula02.domain;
 
 public interface Taxavel {
 

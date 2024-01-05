@@ -1,8 +1,8 @@
-package javacore.Npolimorfismo.test;
+package javacore.Npolimorfismo.aula01.test;
 
-import javacore.Npolimorfismo.domain.Computador;
-import javacore.Npolimorfismo.domain.Tomate;
-import javacore.Npolimorfismo.service.CalculadorImposto;
+import javacore.Npolimorfismo.aula01.domain.Computador;
+import javacore.Npolimorfismo.aula01.domain.Tomate;
+import javacore.Npolimorfismo.aula01.service.CalculadorImposto;
 
 public class ProdutoTest01 {
 
