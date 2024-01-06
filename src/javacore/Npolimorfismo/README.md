@@ -583,3 +583,87 @@ de `Cachorro` ou `Gato` para esse método, graças ao polimorfismo. Em tempo de 
 
 O uso de parâmetros polimórficos é uma prática comum em Java e em programação orientada a objetos em geral. Isso
 contribui para criar código mais flexível e fácil de manter.
+
+# **Cast e instanceof**
+
+## 93 - Orientação Objetos - Polimorfismo pt 04 - Cast e instanceof[^05]
+
+[^05]: Assita o vídeo no
+Youtube -> [93 - Orientação Objetos - Polimorfismo pt 04 - Cast e instanceof](https://abre.ai/hPWl)
+
+**Polimorfismo, Cast e instanceof em Java**
+
+O polimorfismo em Java permite que você use uma referência de uma classe base para se referir a um objeto de uma classe
+derivada. No entanto, em certas situações, você pode precisar converter a referência de volta à sua classe derivada
+original ou verificar o tipo de um objeto antes de fazer uma operação específica. Isso envolve o uso de cast
+e `instanceof`.
+
+### **1. Cast (Conversão de Tipo):**
+
+O operador de cast (`(tipo) expressão`) permite converter uma referência de uma classe base para uma referência de uma
+classe derivada. Aqui está um exemplo:
+
+```java
+class Animal {
+    void fazerSom() {
+        System.out.println("Som genérico de um animal.");
+    }
+}
+
+class Cachorro extends Animal {
+    void fazerSom() {
+        System.out.println("Latido de cachorro.");
+    }
+
+    void correr() {
+        System.out.println("Cachorro correndo.");
+    }
+}
+
+public class TestePolimorfismo {
+    public static void main(String[] args) {
+        Animal meuAnimal = new Cachorro();
+        meuAnimal.fazerSom();  // Saída: Latido de cachorro.
+
+        // Fazendo cast para acessar o método específico de Cachorro
+        ((Cachorro) meuAnimal).correr();  // Saída: Cachorro correndo.
+    }
+}
+```
+
+**Observação:** O cast só deve ser usado quando a conversão é segura, ou seja, quando o objeto real é uma instância da
+classe para a qual você está convertendo.
+
+### **2. instanceof (Verificação de Tipo):**
+
+O operador `instanceof` verifica se um objeto é uma instância de uma determinada classe ou interface. Ele retorna `true`
+se o objeto for uma instância e `false` caso contrário.
+
+```java
+public class TestePolimorfismo {
+    public static void main(String[] args) {
+        Animal meuAnimal = new Cachorro();
+
+        if (meuAnimal instanceof Cachorro) {
+            ((Cachorro) meuAnimal).correr();
+        } else {
+            System.out.println("Não é um cachorro.");
+        }
+    }
+}
+```
+
+### **Vantagens e Considerações:**
+
+- O uso de cast e `instanceof` deve ser feito com cuidado para evitar `ClassCastException`.
+
+- O cast só deve ser usado quando você tem certeza de que a referência aponta para um objeto do tipo desejado.
+
+- O `instanceof` é útil quando você precisa verificar dinamicamente o tipo de um objeto antes de realizar uma operação
+  específica.
+
+**Nota:** Em muitos casos, a necessidade de cast e `instanceof` pode indicar que a hierarquia de classes pode ser
+reorganizada para evitar essas operações. O uso excessivo de cast pode indicar um design menos flexível.
+
+Essas ferramentas são poderosas quando usadas com sabedoria, mas um uso indevido delas pode levar a problemas difíceis
+de depurar.
