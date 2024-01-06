@@ -667,3 +667,63 @@ reorganizada para evitar essas operações. O uso excessivo de cast pode indicar
 
 Essas ferramentas são poderosas quando usadas com sabedoria, mas um uso indevido delas pode levar a problemas difíceis
 de depurar.
+
+# **Programação Orientada a Interface**
+
+## 94 - Orientação Objetos - Polimorfismo pt 05 - Programação orientada a interface[^06]
+
+[^06]: Assita o vídeo no
+Youtube -> [94 - Orientação Objetos - Polimorfismo pt 05 - Programação orientada a interface](https://abre.ai/hPXh)
+
+Na programação orientada a interfaces, o polimorfismo é alcançado através da implementação de interfaces por diferentes
+classes. Interfaces são contratos que especificam um conjunto de métodos que uma classe deve implementar. Diferentes
+classes podem implementar a mesma interface, permitindo que objetos dessas classes sejam tratados de maneira
+polimórfica.
+
+Aqui está um exemplo:
+
+```java
+// Interface que define um método comum
+interface Animal {
+    void fazerSom();
+}
+
+// Classes que implementam a interface
+class Cachorro implements Animal {
+    public void fazerSom() {
+        System.out.println("Latido de cachorro.");
+    }
+}
+
+class Gato implements Animal {
+    public void fazerSom() {
+        System.out.println("Miado de gato.");
+    }
+}
+
+public class TestePolimorfismo {
+    public static void main(String[] args) {
+        // Usando polimorfismo através da interface
+        Animal meuCachorro = new Cachorro();
+        Animal meuGato = new Gato();
+
+        meuCachorro.fazerSom();  // Saída: Latido de cachorro.
+        meuGato.fazerSom();      // Saída: Miado de gato.
+    }
+}
+```
+
+Neste exemplo:
+
+- `Cachorro` e `Gato` implementam a interface `Animal`.
+
+- Os objetos `meuCachorro` e `meuGato` são tratados como objetos da interface `Animal`, permitindo o polimorfismo. Mesmo
+  que sejam instâncias de classes diferentes, podem ser tratados de maneira uniforme por meio da interface comum.
+
+Esse é um exemplo simplificado, mas em aplicações mais complexas, a programação orientada a interfaces permite que você
+crie sistemas mais flexíveis e extensíveis, pois você pode adicionar novas classes que implementam a mesma interface sem
+alterar o código existente.
+
+O polimorfismo em Java, seja por herança ou por interfaces, é uma técnica poderosa que permite escrever código mais
+genérico e reutilizável. Ele é fundamental para alcançar a flexibilidade e a extensibilidade desejadas em sistemas de
+software.
