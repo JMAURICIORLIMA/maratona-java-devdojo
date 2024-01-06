@@ -422,8 +422,6 @@ O polimorfismo é uma poderosa técnica que contribui para a construção de sis
 
 [^03]: Assita o vídeo no Youtube -> [91 - Orientação Objetos - Polimorfismo pt 02 - Funcionamento](https://abre.ai/hPqr)
 
-
-
 O polimorfismo em Java permite que objetos de diferentes classes sejam tratados como objetos de uma mesma classe por
 meio de uma referência de tipo comum. Ele é implementado por meio de dois conceitos principais: sobrescrita de métodos e
 referências de tipo.
@@ -502,3 +500,86 @@ significa que, em tempo de execução, os métodos chamados por meio de `meuAnim
 
 3. **Flexibilidade e Extensibilidade:** O polimorfismo fornece uma base sólida para criar sistemas flexíveis e
    extensíveis em Java.
+
+# **Parâmetros polimórficos**
+
+## 92 - Orientação Objetos - Polimorfismo pt 03 - Parâmetros polimórficos[^04]
+
+[^04]: Assita o vídeo no
+Youtube -> [92 - Orientação Objetos - Polimorfismo pt 03 - Parâmetros polimórficos](https://abre.ai/hPWj)
+
+**Parâmetros Polimórficos em Java**
+
+Os parâmetros polimórficos em Java referem-se à capacidade de aceitar diferentes tipos de objetos através de parâmetros
+de método ou construtor. Isso é possível devido à hierarquia de classes e à capacidade de uma classe mais específica ser
+tratada como sua classe base. Esse conceito é fundamental para o polimorfismo em programação orientada a objetos. Vamos
+explorar como funciona.
+
+### Exemplo Prático:
+
+Vamos considerar uma hierarquia de classes simples com uma classe base `Animal` e duas classes derivadas `Cachorro`
+e `Gato`. Cada uma dessas classes tem um método chamado `emitirSom()`.
+
+```java
+class Animal {
+    void emitirSom() {
+        System.out.println("Som genérico de um animal.");
+    }
+}
+
+class Cachorro extends Animal {
+    void emitirSom() {
+        System.out.println("Latido de cachorro.");
+    }
+}
+
+class Gato extends Animal {
+    void emitirSom() {
+        System.out.println("Miado de gato.");
+    }
+}
+```
+
+Agora, vamos criar uma classe que tem um método que aceita um parâmetro polimórfico:
+
+```java
+public class TestePolimorfismo {
+    static void fazerBarulho(Animal animal) {
+        animal.emitirSom();
+    }
+
+    public static void main(String[] args) {
+        Animal meuAnimal = new Cachorro();
+        fazerBarulho(meuAnimal);  // Saída: Latido de cachorro.
+
+        meuAnimal = new Gato();
+        fazerBarulho(meuAnimal);  // Saída: Miado de gato.
+    }
+}
+```
+
+No exemplo acima, `fazerBarulho` aceita um parâmetro do tipo `Animal`. No entanto, você pode passar instâncias
+de `Cachorro` ou `Gato` para esse método, graças ao polimorfismo. Em tempo de execução, o método correto, correspondente
+à classe real do objeto, é chamado.
+
+### Vantagens dos Parâmetros Polimórficos:
+
+1. **Flexibilidade:** Você pode usar métodos com parâmetros polimórficos para aceitar uma variedade de tipos de objetos.
+
+2. **Manutenção Fácil:** Facilita a adição de novos tipos (classes) sem modificar métodos existentes.
+
+3. **Reusabilidade:** Métodos que aceitam parâmetros polimórficos podem ser reutilizados para diferentes tipos de
+   objetos.
+
+### Considerações Importantes:
+
+1. **Hierarquia de Classes:** Os tipos de objetos passados como parâmetros devem fazer parte da hierarquia de classes.
+
+2. **Métodos Sobrescritos:** É preferível que os métodos chamados sejam sobrescritos nas classes envolvidas para
+   garantir o comportamento desejado.
+
+3. **Entendimento do Código:** O código pode se tornar mais abstrato, então é importante garantir que os desenvolvedores
+   que interagem com o código compreendam a hierarquia de classes.
+
+O uso de parâmetros polimórficos é uma prática comum em Java e em programação orientada a objetos em geral. Isso
+contribui para criar código mais flexível e fácil de manter.
