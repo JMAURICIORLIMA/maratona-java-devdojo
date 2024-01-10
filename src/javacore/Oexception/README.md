@@ -175,3 +175,80 @@ Em resumo, a diferença principal entre `Exception` e `RuntimeException` está n
 aquelas que o compilador exige que sejam tratadas explicitamente, enquanto as `RuntimeException` (unchecked) são
 normalmente erros de programação que não exigem tratamento obrigatório. No entanto, ambas são subclasses de `Throwable`
 e podem ser capturadas por blocos `try-catch` se necessário.
+
+**//--------------------------------------------------------------------------------------------------------------//**
+
+## 97 - Exceções pt 03 - Exception[^04]
+
+[^04]: Assita o vídeo no Youtube -> [97 - Exceções pt 03 - Exception](https://abre.ai/hSMI)
+
+Aprofundando um pouco mais sobre a classe `Exception` em Java. A classe `Exception` é a classe base para
+exceções que são esperadas e podem ser tratadas durante a execução de um programa. Essas exceções são chamadas de "
+checked exceptions". A ideia é que o programador deve antecipar essas exceções e lidar com elas de maneira adequada para
+garantir que o programa seja robusto e capaz de lidar com situações excepcionais.
+
+A hierarquia de classes relacionadas a `Exception` inclui várias subclasses que representam diferentes tipos de
+situações de erro. Algumas delas incluem:
+
+1. **IOException:**
+    - Esta exceção é geralmente lançada quando ocorre um problema de entrada/saída, como falha ao ler ou gravar em um
+      arquivo.
+   ```java
+   try {
+       // Código que pode gerar uma IOException
+   } catch (IOException e) {
+       // Tratamento específico para IOException
+   }
+   ```
+
+2. **SQLException:**
+    - Esta exceção é lançada quando ocorre um problema ao acessar um banco de dados usando JDBC.
+   ```java
+   try {
+       // Código que pode gerar uma SQLException
+   } catch (SQLException e) {
+       // Tratamento específico para SQLException
+   }
+   ```
+
+3. **FileNotFoundException:**
+    - Lançada quando um arquivo que o programa tenta acessar não é encontrado.
+   ```java
+   try {
+       // Código que pode gerar uma FileNotFoundException
+   } catch (FileNotFoundException e) {
+       // Tratamento específico para FileNotFoundException
+   }
+   ```
+
+4. **InterruptedException:**
+    - Lançada quando uma thread é interrompida enquanto está em um estado de espera (bloqueada).
+   ```java
+   try {
+       // Código que pode gerar uma InterruptedException
+   } catch (InterruptedException e) {
+       // Tratamento específico para InterruptedException
+   }
+   ```
+
+É importante notar que, ao usar exceções, o programador tem a oportunidade de lidar com falhas de maneira adequada, seja
+corrigindo o problema ou informando ao usuário sobre a situação excepcional. A declaração `throws` é usada para indicar
+que um método pode lançar uma checked exception, enquanto `try-catch` é usado para capturar e tratar essas exceções.
+
+```java
+void meuMetodo() throws IOException {
+    // Código que pode gerar uma IOException
+}
+```
+
+```java
+try{
+        // Código que pode gerar uma IOException
+        }catch(IOException e){
+        // Tratamento específico para IOException
+        }
+```
+
+Em resumo, `Exception` e suas subclasses fornecem uma estrutura para lidar com situações excepcionais que podem ocorrer
+durante a execução de um programa, permitindo um melhor controle sobre o fluxo do programa e uma resposta mais adequada
+a condições inesperadas.
