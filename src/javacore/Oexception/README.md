@@ -252,3 +252,74 @@ try{
 Em resumo, `Exception` e suas subclasses fornecem uma estrutura para lidar com situações excepcionais que podem ocorrer
 durante a execução de um programa, permitindo um melhor controle sobre o fluxo do programa e uma resposta mais adequada
 a condições inesperadas.
+
+**//--------------------------------------------------------------------------------------------------------------//**
+
+## 98 - Exceções pt 04 - Lançando exceção unchecked[^05]
+
+[^05]: Assita o vídeo no Youtube -> [98 - Exceções pt 04 - Lançando exceção unchecked](https://abre.ai/hSNA)
+
+Em Java, as exceções unchecked são representadas por subclasses de `RuntimeException` e suas subclasses. Diferentemente
+das exceções checked, as exceções unchecked não precisam ser declaradas explicitamente no método com `throws` ou
+tratadas com blocos `try-catch`. Isso significa que o compilador não força o programador a lidar explicitamente com
+essas exceções.
+
+Alguns exemplos comuns de exceções unchecked incluem:
+
+1. **NullPointerException:**
+    - Ocorre quando um programa tenta acessar um membro de um objeto que possui valor `null`.
+   ```java
+   String texto = null;
+   int comprimento = texto.length(); // Isso lançará NullPointerException
+   ```
+
+2. **ArrayIndexOutOfBoundsException:**
+    - Lançada quando um programa tenta acessar um índice inválido em um array.
+   ```java
+   int[] numeros = {1, 2, 3};
+   int valor = numeros[4]; // Isso lançará ArrayIndexOutOfBoundsException
+   ```
+
+3. **ArithmeticException:**
+    - Ocorre em operações aritméticas, como divisão por zero.
+   ```java
+   int resultado = 10 / 0; // Isso lançará ArithmeticException
+   ```
+
+4. **ClassCastException:**
+    - Lançada quando ocorre uma tentativa de converter um objeto para um tipo incompatível.
+   ```java
+   Object obj = "Hello";
+   Integer numero = (Integer) obj; // Isso lançará ClassCastException
+   ```
+
+5. **IllegalArgumentException:**
+    - Ocorre quando um método recebe um argumento inválido.
+   ```java
+   public void setValor(int valor) {
+       if (valor < 0) {
+           throw new IllegalArgumentException("O valor não pode ser negativo.");
+       }
+       // Restante do código...
+   }
+   ```
+
+6. **RuntimeException:**
+    - Uma exceção genérica que pode ser usada quando uma situação excepcional não se encaixa em uma categoria mais
+      específica.
+
+As exceções unchecked geralmente indicam erros de programação ou condições que são difíceis de antecipar durante o
+desenvolvimento. Embora não seja obrigatório tratá-las explicitamente, é uma boa prática lidar com essas exceções sempre
+que possível para garantir a robustez do código e fornecer informações úteis em caso de falha.
+
+```java
+public void meuMetodo(int divisor) {
+    if (divisor == 0) {
+        throw new ArithmeticException("Divisão por zero não é permitida.");
+    }
+    // Restante do código...
+}
+```
+
+Lançar exceções unchecked é uma maneira de indicar que algo está fundamentalmente errado com a lógica do programa e que
+uma correção é necessária.
