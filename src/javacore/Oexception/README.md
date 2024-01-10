@@ -127,3 +127,51 @@ ser tratada de maneira eficaz no código.
 Lembre-se de que, em geral, erros não são destinados a serem tratados no código Java regular. Eles indicam problemas
 graves que podem não ter solução durante a execução normal do programa. O programador geralmente deve se concentrar em
 corrigir esses problemas durante o desenvolvimento.
+
+## 96 - Exceções pt 02 - RuntimeException[^03]
+
+[^03]: Assita o vídeo no Youtube -> [96 - Exceções pt 02 - RuntimeException](https://abre.ai/hSLM)
+
+Em Java, as exceções são eventos que ocorrem durante a execução de um programa e que podem ser tratados para evitar a
+interrupção abrupta do programa. As exceções são objetos que pertencem à hierarquia de classes `Throwable`. Duas
+categorias principais de exceções são as `Exception` e as `RuntimeException`.
+
+1. **Exception:**
+    - `Exception` é uma classe base para exceções que são esperadas e que podem ser tratadas pelo programa. As exceções
+      dessa categoria são conhecidas como "checked exceptions".
+    - Checked exceptions são aquelas que o compilador exige que sejam tratadas explicitamente, seja usando a
+      cláusula `throws` na assinatura do método ou através de blocos `try-catch`.
+    - Exemplos comuns incluem `IOException`, `SQLException` e `FileNotFoundException`.
+
+   Exemplo de tratamento de uma `Exception`:
+
+   ```java
+   try {
+       // Código que pode gerar uma checked exception
+   } catch (IOException e) {
+       // Tratamento específico para IOException
+   } catch (SQLException e) {
+       // Tratamento específico para SQLException
+   }
+   ```
+
+2. **RuntimeException:**
+    - `RuntimeException` é uma subclasse de `Exception` e representa exceções que geralmente indicam erros de
+      programação. Essas exceções são conhecidas como "unchecked exceptions" ou "runtimes".
+    - Ao contrário das checked exceptions, as unchecked exceptions não precisam ser tratadas explicitamente. O
+      programador é encorajado a corrigir esses problemas durante o desenvolvimento.
+    - Exemplos comuns incluem `NullPointerException`, `ArrayIndexOutOfBoundsException` e `ArithmeticException`.
+
+   Exemplo de RuntimeException:
+
+   ```java
+   // Este código pode lançar uma ArithmeticException se o denominador for zero
+   int resultado = numerador / denominador;
+   ```
+
+   Neste exemplo, se `denominador` for zero, uma `ArithmeticException` será lançada em tempo de execução.
+
+Em resumo, a diferença principal entre `Exception` e `RuntimeException` está no tratamento. As `Exception` (checked) são
+aquelas que o compilador exige que sejam tratadas explicitamente, enquanto as `RuntimeException` (unchecked) são
+normalmente erros de programação que não exigem tratamento obrigatório. No entanto, ambas são subclasses de `Throwable`
+e podem ser capturadas por blocos `try-catch` se necessário.
