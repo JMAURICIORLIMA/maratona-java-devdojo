@@ -394,3 +394,78 @@ precisa lidar com essa exceção ou propagá-la ainda mais.
 O tratamento de exceções checked é uma parte importante da construção de software robusto em Java. Certifique-se de
 entender os tipos de exceções que um método pode lançar, para que você possa tomar as medidas adequadas ao chamá-lo.
 Isso geralmente envolve ou tratamento local (`try-catch`) ou propagação da exceção usando `throws`.
+
+**//--------------------------------------------------------------------------------------------------------------//**
+
+## 100 - Exceções pt 06 - Bloco finally[^07]
+
+[^07]: Assita o vídeo no Youtube -> [100 - Exceções pt 06 - Bloco Finally](https://abre.ai/hZm9)
+
+O bloco `finally` em Java é usado para conter código que deve ser executado independentemente de ocorrer ou não uma
+exceção dentro de um bloco `try`. O código dentro do bloco `finally` será sempre executado, mesmo que uma exceção tenha
+sido lançada e capturada ou se o bloco `try` foi executado sem problemas.
+
+A estrutura básica de um bloco `try` com `catch` e `finally` é a seguinte:
+
+```java
+try{
+        // Código que pode gerar uma exceção
+        }catch(TipoDeExcecao1 e){
+        // Tratamento para TipoDeExcecao1
+        }catch(
+TipoDeExcecao2 e){
+        // Tratamento para TipoDeExcecao2
+        }finally{
+        // Código que será executado independentemente de exceções
+        }
+```
+
+Aqui estão alguns pontos importantes sobre o bloco `finally`:
+
+1. **Execução Garantida:**
+    - O código dentro do bloco `finally` será executado, independentemente de ocorrer uma exceção ou não.
+
+2. **Uso para Liberação de Recursos:**
+    - É comum usar o bloco `finally` para liberar recursos que foram adquiridos no bloco `try`. Por exemplo, fechar um
+      arquivo, conexão com banco de dados ou liberar outros recursos.
+
+3. **Código Limpo:**
+    - O bloco `finally` ajuda a manter o código limpo, movendo lógica de limpeza ou liberação de recursos para um local
+      centralizado.
+
+Aqui está um exemplo que ilustra o uso do bloco `finally` para liberar recursos:
+
+```java
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class ExemploFinally {
+
+    public static void main(String[] args) {
+        BufferedReader leitor = null;
+        try {
+            leitor = new BufferedReader(new FileReader("arquivo.txt"));
+            // Código para ler o arquivo
+            System.out.println(leitor.readLine());
+        } catch (IOException e) {
+            System.err.println("Erro de leitura: " + e.getMessage());
+        } finally {
+            try {
+                // Fechar o BufferedReader no bloco finally
+                if (leitor != null) {
+                    leitor.close();
+                }
+            } catch (IOException e) {
+                System.err.println("Erro ao fechar o leitor: " + e.getMessage());
+            }
+        }
+    }
+}
+```
+
+Neste exemplo, o bloco `finally` é usado para garantir que o `BufferedReader` seja fechado, independentemente de ocorrer
+uma exceção ou não durante a leitura do arquivo. Isso ajuda a evitar vazamentos de recursos.
+
+Ao utilizar o bloco `finally`, você assegura que determinadas ações de limpeza ou liberação de recursos serão
+realizadas, contribuindo para um código mais robusto e confiável.
