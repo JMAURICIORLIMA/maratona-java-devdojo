@@ -630,3 +630,98 @@ uma dessas exceções ocorrer, o bloco `catch` será executado, e o tratamento e
 Em geral, o multi-catch é uma ferramenta útil quando você deseja simplificar o tratamento de exceções, proporcionando um
 código mais limpo e claro. Use-o com cuidado, considerando a relação entre as exceções que você está tratando. Se
 diferentes exceções exigirem tratamento específico, ainda pode ser apropriado usar blocos `catch` separados.
+
+**//--------------------------------------------------------------------------------------------------------------//**
+
+## 103 - Exceções pt 09 - Try with resources[^10]
+
+[^10]: Assita o vídeo no Youtube -> [Exceções pt 09 - Try with resources](https://abre.ai/hZGq)
+
+O bloco "try-with-resources" em Java é uma construção que simplifica o código ao lidar com recursos que precisam ser
+fechados explicitamente, como arquivos, sockets ou conexões com bancos de dados. Essa construção introduz o conceito
+de "resources" que implementa a interface `AutoCloseable` ou `Closeable`. O Java se encarregará automaticamente de
+fechar esses recursos, eliminando a necessidade de bloco `finally` para liberar recursos manualmente.
+
+Aqui está a sintaxe básica do bloco "try-with-resources":
+
+```java
+try(Recurso1 recurso1 = new Recurso1();
+Recurso2 recurso2 = new Recurso2()){
+        // Código que utiliza os recursos
+        }catch(
+TipoDeExcecao1 e1){
+        // Tratamento para TipoDeExcecao1
+        }catch(
+TipoDeExcecao2 e2){
+        // Tratamento para TipoDeExcecao2
+        }
+```
+
+Aqui estão alguns pontos importantes sobre o "try-with-resources":
+
+1. **Recursos AutoCloseable:**
+    - Os recursos utilizados no "try-with-resources" devem implementar a interface `AutoCloseable` ou `Closeable`.
+
+2. **Fechamento Automático:**
+    - Os recursos declarados no bloco "try-with-resources" são automaticamente fechados após a conclusão do bloco, seja
+      por término normal ou por exceção.
+
+3. **Ordem de Fechamento:**
+    - Os recursos são fechados na ordem inversa da sua declaração. O último recurso declarado é fechado primeiro.
+
+4. **Sem Necessidade de Bloco Finally:**
+    - Não é necessário um bloco `finally` para fechar explicitamente os recursos. Isso reduz a quantidade de código e
+      torna o código mais legível.
+
+### Exemplo de "try-with-resources":
+
+```java
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class ExemploTryWithResources {
+
+    public static void main(String[] args) {
+        // Usando try-with-resources para ler um arquivo
+        try (BufferedReader leitor = new BufferedReader(new FileReader("arquivo.txt"))) {
+            // Código para ler o arquivo
+            System.out.println(leitor.readLine());
+        } catch (IOException e) {
+            // Tratamento para exceção de leitura
+            System.err.println("Erro de leitura: " + e.getMessage());
+        }
+    }
+}
+```
+
+Neste exemplo, a classe `BufferedReader` e o `FileReader` são recursos que implementam a interface `AutoCloseable`. O
+bloco "try-with-resources" garante que esses recursos sejam fechados automaticamente após a conclusão do bloco.
+
+### Quando Usar o "try-with-resources":
+
+1. **Leitura ou Gravação de Arquivos:**
+    - Use "try-with-resources" ao ler ou gravar arquivos para garantir que os recursos associados aos arquivos sejam
+      fechados corretamente.
+
+2. **Operações com Banco de Dados:**
+    - Use-o ao trabalhar com conexões de banco de dados para garantir que as conexões sejam fechadas automaticamente.
+
+3. **Operações de Rede:**
+    - Ao realizar operações de rede, como abrir e fechar sockets, use "try-with-resources" para garantir que os recursos
+      sejam liberados corretamente.
+
+### Quando Não Usar o "try-with-resources":
+
+1. **Recursos Não Implementam AutoCloseable:**
+    - Não use "try-with-resources" se o recurso que você está usando não implementar a interface `AutoCloseable`
+      ou `Closeable`.
+
+2. **Lógica Personalizada de Fechamento:**
+    - Se você precisar de lógica personalizada para o fechamento de recursos que não seja simplesmente chamar `close()`,
+      o "try-with-resources" pode não ser adequado.
+
+Em resumo, use "try-with-resources" sempre que estiver trabalhando com recursos que implementam `AutoCloseable`
+ou `Closeable`. Isso ajuda a garantir que os recursos sejam fechados corretamente, simplificando seu código e tornando-o
+mais seguro. Evite seu uso apenas quando os recursos não implementam essas interfaces ou quando você precisa de lógica
+personalizada de fechamento.
