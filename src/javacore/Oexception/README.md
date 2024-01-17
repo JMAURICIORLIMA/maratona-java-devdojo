@@ -725,3 +725,90 @@ Em resumo, use "try-with-resources" sempre que estiver trabalhando com recursos 
 ou `Closeable`. Isso ajuda a garantir que os recursos sejam fechados corretamente, simplificando seu código e tornando-o
 mais seguro. Evite seu uso apenas quando os recursos não implementam essas interfaces ou quando você precisa de lógica
 personalizada de fechamento.
+
+**//--------------------------------------------------------------------------------------------------------------//**
+
+## 104 - Exceções pt 10 - Exceção customizada[^10]
+
+[^10]: Assita o vídeo no Youtube -> [104 - Exceções pt 10 - Exceção customizada](https://abre.ai/hZJr)
+
+Uma exceção customizada, também conhecida como exceção personalizada ou exceção definida pelo usuário, é uma classe de
+exceção criada pelo desenvolvedor para representar condições específicas em seu programa. Essas exceções são úteis
+quando você deseja sinalizar erros ou situações excepcionais que são específicos da lógica do seu aplicativo.
+
+### Como Criar uma Exceção Customizada:
+
+1. **Estenda uma Classe de Exceção:**
+    - Crie uma classe que estenda `Exception` ou uma de suas subclasses, como `RuntimeException` se você deseja criar
+      uma exceção unchecked.
+
+2. **Construtor Personalizado:**
+    - Adicione um construtor que permite passar informações adicionais para a exceção, como uma mensagem de erro
+      personalizada.
+
+Aqui está um exemplo simples de uma exceção customizada:
+
+```java
+public class MinhaExcecao extends Exception {
+
+    public MinhaExcecao(String mensagem) {
+        super(mensagem);
+    }
+}
+```
+
+### Exemplo de Uso da Exceção Customizada:
+
+```java
+public class ExemploExcecaoCustomizada {
+
+    public static void main(String[] args) {
+        try {
+            validarNumero(5);
+            validarNumero(-2); // Isso lançará a exceção customizada
+        } catch (MinhaExcecao e) {
+            System.err.println("Erro: " + e.getMessage());
+        }
+    }
+
+    public static void validarNumero(int numero) throws MinhaExcecao {
+        if (numero < 0) {
+            throw new MinhaExcecao("Número não pode ser negativo.");
+        }
+        // Lógica adicional...
+    }
+}
+```
+
+Neste exemplo, a exceção customizada `MinhaExcecao` é lançada quando o método `validarNumero` recebe um número negativo.
+A mensagem personalizada da exceção é então capturada e impressa no bloco `catch` do método `main`.
+
+### Quando Usar Exceções Customizadas:
+
+1. **Casos Específicos:**
+    - Use exceções customizadas quando você precisa representar situações excepcionais específicas que não são bem
+      representadas por exceções existentes.
+
+2. **Mensagens Descritivas:**
+    - Utilize exceções customizadas para fornecer mensagens de erro detalhadas e descritivas que ajudem na depuração e
+      no entendimento dos problemas.
+
+3. **Hierarquia de Exceções:**
+    - Crie uma hierarquia de exceções customizadas se você tiver várias condições excepcionais específicas no seu
+      programa.
+
+### Quando Não Usar Exceções Customizadas:
+
+1. **Complexidade Excessiva:**
+    - Evite criar exceções customizadas desnecessárias se a lógica do seu programa puder ser tratada de maneira mais
+      simples e direta sem o uso delas.
+
+2. **Reutilização de Exceções Padrão:**
+    - Em alguns casos, pode ser mais apropriado reutilizar exceções padrão do Java e fornecer informações adicionais por
+      meio de mensagens ou métodos de acesso.
+
+3. **Pouco Valor Adicional:**
+    - Não crie exceções customizadas se elas não adicionarem valor significativo à clareza e manutenção do seu código.
+
+Ao criar exceções customizadas, é importante equilibrar a granularidade das exceções com a simplicidade e clareza do
+código. Use-as quando realmente adicionarem valor e expressividade ao seu código.
