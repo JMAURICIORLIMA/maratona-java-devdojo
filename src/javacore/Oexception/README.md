@@ -552,3 +552,81 @@ que o tratamento específico seja realizado antes do tratamento mais genérico.
 Em resumo, a captura de múltiplas exceções em Java oferece flexibilidade ao tratar diferentes tipos de exceções de
 maneira específica. Use essa abordagem quando precisar fornecer tratamentos específicos para diferentes tipos de
 exceções ou quando desejar consolidar o tratamento de exceções em um único local.
+
+**//--------------------------------------------------------------------------------------------------------------//**
+
+## 102 - Exceções pt 08 - Multi catch em linha[^09]
+
+[^09]: Assita o vídeo no Youtube -> [102 - Exceções pt 08 - Multi catch em linha](https://abre.ai/hZDC)
+
+O multi-catch em Java é uma funcionalidade que permite capturar várias exceções em um único bloco `catch`. Isso pode
+tornar o código mais conciso e legível quando você deseja aplicar o mesmo tratamento a várias exceções. A sintaxe básica
+é colocar os tipos de exceção desejados entre parênteses, separados por barras verticais (`|`).
+
+Aqui está um exemplo básico de multi-catch:
+
+```java
+try{
+        // Código que pode gerar exceções
+        }catch(TipoDeExcecao1 |TipoDeExcecao2 |
+TipoDeExcecao3 e){
+        // Tratamento para TipoDeExcecao1, TipoDeExcecao2 ou TipoDeExcecao3
+        }
+```
+
+Aqui está um exemplo mais prático:
+
+```java
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+public class ExemploMultiCatch {
+
+    public static void main(String[] args) {
+        try {
+            // Código que pode gerar exceções
+            lerArquivo("arquivo.txt");
+        } catch (FileNotFoundException | IOException e) {
+            System.err.println("Erro de leitura: " + e.getMessage());
+        }
+    }
+
+    public static void lerArquivo(String nomeArquivo) throws IOException {
+        // Código para ler o arquivo
+        throw new IOException("Erro de leitura no arquivo: " + nomeArquivo);
+    }
+}
+```
+
+Neste exemplo, o bloco `catch` utiliza o multi-catch para tratar tanto `FileNotFoundException` quanto `IOException`. Se
+uma dessas exceções ocorrer, o bloco `catch` será executado, e o tratamento específico será aplicado.
+
+### Quando Usar o Multi-Catch:
+
+1. **Tratamento Simples:**
+    - Use o multi-catch quando o tratamento para várias exceções é o mesmo.
+
+2. **Redução de Código Repetitivo:**
+    - Se diferentes exceções exigirem o mesmo tratamento, o uso de multi-catch pode reduzir a duplicação de código.
+
+3. **Melhoria na Legibilidade:**
+    - O uso de multi-catch pode tornar o código mais conciso e legível, especialmente quando várias exceções têm
+      tratamento semelhante.
+
+### Cuidados e Limitações:
+
+1. **Ordem dos Tipos de Exceção:**
+    - A ordem dos tipos de exceção é importante. Java verifica os tipos na ordem em que aparecem e executa o
+      bloco `catch` do primeiro tipo correspondente encontrado.
+
+2. **Exceções Relacionadas:**
+    - Use multi-catch quando as exceções são de tipos relacionados ou subclasses entre si. Não é permitido misturar
+      tipos de exceção não relacionados.
+
+3. **Variáveis Final:**
+    - A variável no bloco `catch` é efetivamente final. Isso significa que você não pode modificar seu valor dentro do
+      bloco `catch`.
+
+Em geral, o multi-catch é uma ferramenta útil quando você deseja simplificar o tratamento de exceções, proporcionando um
+código mais limpo e claro. Use-o com cuidado, considerando a relação entre as exceções que você está tratando. Se
+diferentes exceções exigirem tratamento específico, ainda pode ser apropriado usar blocos `catch` separados.
