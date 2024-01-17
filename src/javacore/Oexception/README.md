@@ -323,3 +323,74 @@ public void meuMetodo(int divisor) {
 
 Lançar exceções unchecked é uma maneira de indicar que algo está fundamentalmente errado com a lógica do programa e que
 uma correção é necessária.
+
+**//--------------------------------------------------------------------------------------------------------------//**
+
+## 99 - Exceções pt 05 - Lançando exceção checked[^06]
+
+[^06]: Assita o vídeo no Youtube -> [99 - Exceções pt 05 - Lançando exceção checked](https://abre.ai/hYOO)
+
+Quando você está criando um método que pode lançar exceções checked, você precisa informar isso na assinatura do método
+usando a palavra-chave `throws`. Isso alerta o compilador de que o método pode gerar exceções específicas e que quem
+chama esse método deve lidar com essas exceções.
+
+Aqui está um exemplo de como criar um método que lança uma exceção checked:
+
+```java
+import java.io.FileNotFoundException;
+
+public class ExemploMetodoChecked {
+
+    // Este método lança uma exceção checked (FileNotFoundException)
+    public void lerArquivo(String nomeArquivo) throws FileNotFoundException {
+        // Código para ler o arquivo
+        // Se o arquivo não for encontrado, lança uma exceção
+        throw new FileNotFoundException("Arquivo não encontrado: " + nomeArquivo);
+    }
+}
+```
+
+Agora, ao chamar esse método, quem o chama precisa lidar com a exceção ou propagá-la para cima na cadeia de chamadas
+usando a palavra-chave `throws`.
+
+```java
+public class ExemploChamadaMetodo {
+
+    public static void main(String[] args) {
+        ExemploMetodoChecked exemplo = new ExemploMetodoChecked();
+
+        // Tentando chamar o método que lança uma exceção checked
+        try {
+            exemplo.lerArquivo("arquivo.txt");
+        } catch (FileNotFoundException e) {
+            // Tratamento específico para FileNotFoundException
+            System.err.println("Erro ao ler o arquivo: " + e.getMessage());
+        }
+    }
+}
+```
+
+Neste exemplo, o método `lerArquivo` é chamado e, como ele pode lançar `FileNotFoundException`, a chamada do método está
+envolta em um bloco `try-catch` que trata essa exceção específica.
+
+Alternativamente, se você não deseja tratar a exceção no local, você pode propagá-la usando a palavra-chave `throws`.
+Isso significa que o método chamador também precisa lidar com essa exceção ou propagá-la ainda mais.
+
+```java
+public class ExemploChamadaMetodoSemTratamento {
+
+    public static void main(String[] args) throws FileNotFoundException {
+        ExemploMetodoChecked exemplo = new ExemploMetodoChecked();
+
+        // Chamando o método sem tratamento local
+        exemplo.lerArquivo("arquivo.txt");
+    }
+}
+```
+
+Neste caso, a exceção é propagada para o método chamador (`main` neste exemplo), e agora quem chama `main` também
+precisa lidar com essa exceção ou propagá-la ainda mais.
+
+O tratamento de exceções checked é uma parte importante da construção de software robusto em Java. Certifique-se de
+entender os tipos de exceções que um método pode lançar, para que você possa tomar as medidas adequadas ao chamá-lo.
+Isso geralmente envolve ou tratamento local (`try-catch`) ou propagação da exceção usando `throws`.
