@@ -469,3 +469,86 @@ uma exceção ou não durante a leitura do arquivo. Isso ajuda a evitar vazament
 
 Ao utilizar o bloco `finally`, você assegura que determinadas ações de limpeza ou liberação de recursos serão
 realizadas, contribuindo para um código mais robusto e confiável.
+
+**//--------------------------------------------------------------------------------------------------------------//**
+
+## 101 - Exceções pt 07 - Capturando múltiplas exceções[^08]
+
+[^08]: Assita o vídeo no Youtube -> [101 - Exceções pt 07 - Capturando múltiplas exceções](https://abre.ai/hZzf)
+
+A captura de múltiplas exceções em Java permite que você lide com diferentes tipos de exceções de maneira específica em
+um único bloco `catch`. Isso é útil quando você deseja tratar várias exceções de maneira semelhante ou quando deseja
+fornecer tratamentos específicos para diferentes tipos de exceções.
+
+A sintaxe básica para capturar múltiplas exceções é usar vários blocos `catch` após um bloco `try`. Cada bloco `catch`
+trata uma exceção específica. Aqui está um exemplo simples:
+
+```java
+try{
+        // Código que pode gerar exceções
+        }catch(TipoDeExcecao1 e){
+        // Tratamento específico para TipoDeExcecao1
+        }catch(
+TipoDeExcecao2 e){
+        // Tratamento específico para TipoDeExcecao2
+        }catch(
+TipoDeExcecao3 e){
+        // Tratamento específico para TipoDeExcecao3
+        }catch(
+Exception e){
+        // Tratamento para outras exceções
+        }
+```
+
+Neste exemplo, o bloco `try` contém código que pode gerar diferentes tipos de exceções. Cada bloco `catch` é responsável
+por lidar com um tipo específico de exceção. O último bloco `catch` com `Exception` é opcional e captura exceções que
+não são especificamente tratadas pelos blocos anteriores.
+
+A ordem dos blocos `catch` é importante, pois Java verifica cada bloco na ordem em que aparecem e executa o primeiro
+bloco que corresponde à exceção lançada.
+
+Aqui estão algumas considerações sobre a captura de múltiplas exceções:
+
+1. **Ordem de Blocos Catch:**
+    - Coloque blocos `catch` para exceções mais específicas antes dos blocos para exceções mais genéricas. Isso evita
+      que exceções mais específicas sejam capturadas por blocos mais genéricos.
+
+2. **Evite Ambiguidades:**
+    - Evite blocos `catch` que podem capturar exceções ambíguas. Se possível, organize os blocos de maneira que cada
+      exceção seja tratada em apenas um bloco.
+
+Aqui está um exemplo mais prático:
+
+```java
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+public class ExemploCapturaMultipla {
+
+    public static void main(String[] args) {
+        try {
+            // Código que pode gerar exceções
+            lerArquivo("arquivo.txt");
+        } catch (FileNotFoundException e) {
+            System.err.println("Arquivo não encontrado: " + e.getMessage());
+        } catch (IOException e) {
+            System.err.println("Erro de leitura: " + e.getMessage());
+        } catch (Exception e) {
+            System.err.println("Exceção geral: " + e.getMessage());
+        }
+    }
+
+    public static void lerArquivo(String nomeArquivo) throws IOException {
+        // Código para ler o arquivo
+        throw new IOException("Erro de leitura no arquivo: " + nomeArquivo);
+    }
+}
+```
+
+Neste exemplo, o método `lerArquivo` pode lançar uma `FileNotFoundException` ou uma `IOException`. O bloco `catch`
+específico para `FileNotFoundException` é colocado antes do bloco `catch` mais genérico para `IOException`. Isso garante
+que o tratamento específico seja realizado antes do tratamento mais genérico.
+
+Em resumo, a captura de múltiplas exceções em Java oferece flexibilidade ao tratar diferentes tipos de exceções de
+maneira específica. Use essa abordagem quando precisar fornecer tratamentos específicos para diferentes tipos de
+exceções ou quando desejar consolidar o tratamento de exceções em um único local.
