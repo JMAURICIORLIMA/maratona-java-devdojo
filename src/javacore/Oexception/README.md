@@ -812,3 +812,86 @@ A mensagem personalizada da exceção é então capturada e impressa no bloco `c
 
 Ao criar exceções customizadas, é importante equilibrar a granularidade das exceções com a simplicidade e clareza do
 código. Use-as quando realmente adicionarem valor e expressividade ao seu código.
+
+**//--------------------------------------------------------------------------------------------------------------//**
+
+## 105 - Exceções pt 11 - Exceção e regras de sobrescrita[^11]
+
+[^11]: Assita o vídeo no Youtube -> [105 - Exceções pt 11 - Exceção e regras de sobresKcrita](https://abre.ai/hZMVK)
+
+A sobrescrita de métodos em Java refere-se à capacidade de uma subclasse fornecer uma implementação específica para um
+método que já está definido em sua superclasse. As regras de sobrescrita de métodos também se aplicam a métodos que
+declaram lançar exceções. Vamos abordar as regras e depois discutir quando é apropriado usar ou evitar a sobrescrita de
+métodos que lançam exceções.
+
+### Regras de Sobrescrita de Métodos e Exceções:
+
+1. **Relação de Subtipo:**
+    - A classe derivada (subclasse) deve lançar exceções que são subtipos ou iguais às exceções lançadas pelo método na
+      classe base (superclasse).
+
+2. **Maior Especificidade:**
+    - A subclasse pode lançar exceções mais específicas do que a superclasse. Isso é conhecido como "covariância nas
+      exceções".
+
+3. **Sem Adição de Novas Exceções de Checagem:**
+    - A subclasse não pode adicionar novas exceções de checagem (checked exceptions) às lançadas pelo método da
+      superclasse.
+
+4. **Exceções Não Relacionadas:**
+    - Exceções não relacionadas (que não estão em uma relação de subtipo) podem ser lançadas em métodos sobrescritos,
+      mas apenas exceções não checadas (unchecked exceptions) podem ser adicionadas.
+
+### Exemplo de Sobrescrita de Métodos e Exceções:
+
+```java
+class Superclasse {
+    // Método na superclasse que declara lançar uma exceção
+    void metodoComExcecao() throws Exception {
+        // ...
+    }
+}
+
+class Subclasse extends Superclasse {
+    // Sobrescrita do método com exceção mais específica
+    @Override
+    void metodoComExcecao() throws IOException {
+        // ...
+    }
+}
+```
+
+Neste exemplo, a subclasse `Subclasse` sobrescreve o método `metodoComExcecao` da superclasse `Superclasse`. A subclasse
+está lançando uma exceção mais específica (`IOException`), que é permitida pela regra de covariância nas exceções.
+
+### Quando Usar Sobrescrita de Métodos com Exceções:
+
+1. **Adaptação para Cenários Específicos:**
+    - Use sobrescrita de métodos para adaptar a implementação de um método às necessidades específicas da subclasse.
+
+2. **Fornecer Exceções Mais Específicas:**
+    - Use para fornecer exceções mais específicas na subclasse, permitindo que o código cliente lide com situações
+      excepcionais de maneira mais precisa.
+
+3. **Manutenção do Contrato:**
+    - Ao sobrescrever um método que lança exceções, mantenha a relação de subtipo e não adicione novas exceções de
+      checagem, a menos que esteja lidando com exceções não checadas.
+
+### Quando Não Usar Sobrescrita de Métodos com Exceções:
+
+1. **Mudança no Contrato:**
+    - Evite alterar o contrato do método (a lista de exceções declaradas) de maneira que quebre a compatibilidade com a
+      superclasse ou interfira na capacidade do código cliente de lidar com exceções de maneira genérica.
+
+2. **Exceções Não Relacionadas:**
+    - Evite adicionar exceções que não estão relacionadas ao contrato original do método. Isso pode introduzir confusão
+      e quebrar o código existente.
+
+3. **Adição de Exceções Checadas:**
+    - Não adicione novas exceções de checagem ao contrato do método a menos que seja necessário para representar
+      condições excepcionais específicas que fazem sentido no contexto da subclasse.
+
+Em resumo, a sobrescrita de métodos com exceções é uma ferramenta poderosa quando usada com cuidado para adaptar a
+implementação de métodos em subclasses. Ao fazê-lo, é importante manter a relação de subtipo e fornecer exceções mais
+específicas quando apropriado. Evite alterar o contrato do método de uma maneira que quebre a compatibilidade com a
+superclasse ou confunda o código cliente.
