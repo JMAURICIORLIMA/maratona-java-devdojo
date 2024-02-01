@@ -113,3 +113,8 @@ Esses são apenas alguns dos métodos oferecidos pela classe `String` em Java. E
 para realizar várias operações de manipulação de strings, como divisão, concatenação, remoção de espaços em branco, etc.
 Sempre que precisar realizar uma operação específica em uma string, é útil verificar a documentação oficial da
 classe `String` para encontrar o método apropriado.
+
+
+## 110 - Classes Utilitárias - Strings pt 03 - Desempenho[^04]
+
+[^04]: Assita o vídeo no Youtube -> [110 - Classes Utilitárias - Strings pt 03 - Desempenho](https://abre.ai/iK6t)

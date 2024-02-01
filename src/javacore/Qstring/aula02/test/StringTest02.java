@@ -1,4 +1,4 @@
-package javacore.Qstring.aule02.test;
+package javacore.Qstring.aula02.test;
 
 public class StringTest02 {
 
