@@ -63,3 +63,56 @@ public class Main {
 
 Essas classes wrapper fornecem funcionalidades adicionais e são úteis em situações onde você precisa trabalhar com tipos
 primitivos como objetos.
+
+## 107 - Classes Utilitárias - Wrappers pt 02[^03]
+
+[^03]: Assita o vídeo no Youtube -> [107 - Classes Utilitárias - Wrappers pt 02](https://abre.ai/iKG5)
+
+O autoboxing e o unboxing são recursos introduzidos no Java que simplificam o uso de classes wrapper para tipos
+primitivos. Eles permitem que você atribua valores diretamente entre tipos primitivos e suas classes wrapper
+correspondentes, sem a necessidade de chamar explicitamente os métodos de conversão.
+
+**Autoboxing**:
+É o processo pelo qual um tipo primitivo é automaticamente convertido para seu correspondente objeto wrapper quando é
+necessário. Isso ocorre quando você atribui um valor primitivo a uma variável de um tipo wrapper.
+
+**Unboxing**:
+É o oposto do autoboxing. É o processo pelo qual um objeto wrapper é automaticamente convertido para seu tipo primitivo
+correspondente quando é necessário. Isso ocorre quando você atribui um objeto wrapper a uma variável de um tipo
+primitivo.
+
+Aqui está um exemplo que demonstra tanto o autoboxing quanto o unboxing em Java:
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        // Autoboxing: int -> Integer
+        Integer num1 = 10;
+
+        // Unboxing: Integer -> int
+        int value1 = num1;
+
+        System.out.println("Autoboxing: " + num1);
+        System.out.println("Unboxing: " + value1);
+
+        // Autoboxing: double -> Double
+        Double num2 = 5.5;
+
+        // Unboxing: Double -> double
+        double value2 = num2;
+
+        System.out.println("Autoboxing: " + num2);
+        System.out.println("Unboxing: " + value2);
+    }
+}
+```
+
+Neste exemplo:
+
+- `num1` é um `Integer` que é inicializado com um valor primitivo `int` (autoboxing).
+- `value1` é uma variável `int` que é inicializada com o valor primitivo dentro de `num1` (unboxing).
+- Similarmente, `num2` é um `Double` inicializado com um valor primitivo `double`, e `value2` é uma variável `double`
+  inicializada com o valor primitivo dentro de `num2`.
+
+Esses recursos tornam o código mais legível e menos propenso a erros, reduzindo a necessidade de converter
+explicitamente entre tipos primitivos e suas classes wrapper.
