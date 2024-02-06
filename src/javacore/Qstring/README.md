@@ -114,7 +114,48 @@ para realizar várias operações de manipulação de strings, como divisão, co
 Sempre que precisar realizar uma operação específica em uma string, é útil verificar a documentação oficial da
 classe `String` para encontrar o método apropriado.
 
-
 ## 110 - Classes Utilitárias - Strings pt 03 - Desempenho[^04]
 
 [^04]: Assita o vídeo no Youtube -> [110 - Classes Utilitárias - Strings pt 03 - Desempenho](https://abre.ai/iK6t)
+
+## 111 - Classes Utilitárias - Strings pt 04 - StringBuilder[^05]
+
+[^05]: Assita o vídeo no Youtube -> [111 - Classes Utilitárias - Strings pt 04 - StringBuilder](https://abre.ai/iOOY)
+
+As três classes - `String`, `StringBuilder`, e `StringBuffer` - em Java são usadas para manipulação de strings, mas têm
+diferenças importantes em termos de mutabilidade, desempenho e concorrência. Aqui estão as principais diferenças entre
+elas:
+
+1. **Imutabilidade**:
+    - **String**: Strings em Java são imutáveis, o que significa que uma vez criadas, elas não podem ser modificadas.
+      Qualquer operação que pareça modificar uma string na verdade cria uma nova string.
+    - **StringBuilder** e **StringBuffer**: Ambas são mutáveis, permitindo a modificação do conteúdo da string sem criar
+      novas instâncias. Isso as torna mais eficientes em operações de manipulação de strings que envolvem muitas
+      alterações.
+
+2. **Desempenho**:
+    - **String**: Devido à imutabilidade, operações que modificam strings (`concat()`, `replace()`, etc.) podem ser
+      menos eficientes, especialmente em loops ou em casos de manipulação intensiva de strings.
+    - **StringBuilder**: É otimizado para manipulação eficiente de strings mutáveis. Ideal para cenários em que a
+      concatenação ou a manipulação de strings envolve muitas operações e pode mudar frequentemente.
+    - **StringBuffer**: Similar ao `StringBuilder`, mas é sincronizado (thread-safe), o que significa que é mais lento
+      devido ao overhead de sincronização. É preferível usar `StringBuilder` em cenários onde a sincronização não é
+      necessária.
+
+3. **Concorrência**:
+    - **String**: Como as strings são imutáveis, elas são seguras para uso em ambientes concorrentes sem necessidade de
+      sincronização.
+    - **StringBuilder**: Não é sincronizado, o que o torna mais rápido, mas não é seguro para uso em ambientes
+      concorrentes sem sincronização adicional.
+    - **StringBuffer**: É sincronizado, tornando-o seguro para uso em ambientes concorrentes. No entanto, devido à
+      sincronização, pode ser menos eficiente em comparação com `StringBuilder` em cenários não concorrentes.
+
+4. **Uso adequado**:
+    - Use `String` quando a string for imutável e não precisar ser modificada.
+    - Use `StringBuilder` quando precisar manipular strings mutáveis de forma eficiente, especialmente em cenários com
+      muitas operações de concatenação ou manipulação.
+    - Use `StringBuffer` apenas em casos onde a sincronização é necessária devido a requisitos de concorrência,
+      pois `StringBuilder` geralmente tem melhor desempenho em cenários não concorrentes.
+
+Em resumo, a escolha entre `String`, `StringBuilder` e `StringBuffer` depende das necessidades específicas do seu
+aplicativo, incluindo a natureza das operações de manipulação de strings, desempenho e requisitos de concorrência.
