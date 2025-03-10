@@ -1,9 +1,9 @@
-package javacore.Uregex.aula02.test;
+package javacore.Uregex.aula03;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class PatternMatcherTest012 {
+public class PatternMatcherTest03 {
     public static void main(String[] args) {
 
         /*
@@ -13,10 +13,12 @@ public class PatternMatcherTest012 {
         * \S = Tpdps ps caracteres excçuindo os brancos.
         * \w = a-Z, A-Z, digitos, _
         * \W = Tudp que não for incluso no \w
+        * []
          */
-        String regex = "\\W";
+//        String regex = "[a-zA-C]";
+        String regex = "0[xX][0-9a-fA-F]";
 //        String text = "abaaba";
-        String text2 = "@#$a3_jsf3 t 4sdfmaa6 4075";
+        String text2 = "12 0x 0X 0xFFABC 0x109 0x1";
 
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(text2);
