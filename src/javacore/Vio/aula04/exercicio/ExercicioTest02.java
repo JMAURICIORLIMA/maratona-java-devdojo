@@ -50,7 +50,7 @@ public class ExercicioTest02 {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter("novoDiario.txt"))){
             bw.write("\uD83D\uDCC5 [" + dataHoraFormatada + "]");
             bw.newLine();
-            bw.write("\uD83D\uDCAD: " + fraseSorteada);
+            bw.write("\uD83D\uDCAD " + fraseSorteada);
             bw.newLine();
             bw.write("\uD83D\uDCDD Reflexão: " + reflexao);
             bw.newLine();
