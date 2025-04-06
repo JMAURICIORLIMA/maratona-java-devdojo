@@ -1,0 +1,32 @@
+## 💡 **Desafio: Leitor do Diário**
+
+No exercício anterior, você criou um **diário do programador** que salva entradas em um arquivo `diario.txt`.
+Agora você vai **ler** esse arquivo e exibir no console as últimas entradas escritas.
+
+---
+
+## 🎯 **Objetivo:**
+Criar um programa que:
+1. Abre o arquivo `diario.txt`;
+2. Lê todas as linhas do arquivo;
+3. Exibe as entradas de forma formatada no console.
+
+---
+
+### 🧾 Saída esperada (exemplo):
+
+```
+📖 --- Leitura do Diário ---
+
+📅 [30/03/2025 15:42:22]
+💭 Frase do dia: Persistência compila resultados.
+📝 Reflexão: Hoje venci um bug que me perseguiu por horas!
+-----------------------------------------------------
+
+📅 [30/03/2025 16:05:14]
+💭 Frase do dia: Código limpo, mente limpa.
+📝 Reflexão: Refatorei aquele método enorme com sucesso.
+-----------------------------------------------------
+
+✅ Fim da leitura do diário.
+```
